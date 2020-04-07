@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Credenciales } from '../credenciales';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import Swal from 'sweetalert2';
-import { Pregunta } from './pregunta';
-import { Puntos } from './puntos';
+import { Puntos } from '../objects/puntos';
 
 @Injectable({
   providedIn: 'root'

@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Pregunta } from './pregunta';
-import { Credenciales } from '../credenciales';
-import { PreguntasService } from './preguntas.service';
-import { Preguntas } from './preguntas';
 import { ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
-import { Puntos } from './puntos';
+import { Pregunta } from 'src/app/objects/pregunta';
+import { Puntos } from 'src/app/objects/puntos';
+import { PreguntasService } from 'src/app/services/preguntas.service';
 
 @Component({
   selector: 'app-preguntas',

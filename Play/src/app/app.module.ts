@@ -10,6 +10,7 @@ import { InicioComponent } from './inicio/inicio.component';
 import { Credenciales } from './credenciales';
 import { PreguntasService } from './preguntas/preguntas.service';
 import { Preguntas } from './preguntas/preguntas';
+import { ExplicacionComponent } from './components/explicacion/explicacion.component';
 
 const routes: Routes = [
   {path: '', component: InicioComponent},
@@ -21,7 +22,8 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     PreguntasComponent,
-    InicioComponent
+    InicioComponent,
+    ExplicacionComponent
   ],
   imports: [
     BrowserModule,
