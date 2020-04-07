@@ -5,8 +5,6 @@ import { FormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
-import { PuntosComponent } from './puntos/puntos.component';
-import { PuntosService } from './puntos/puntos.service';
 import { PreguntasComponent } from './preguntas/preguntas.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { Credenciales } from './credenciales';

@@ -4,7 +4,6 @@ import { Credenciales } from '../credenciales';
 import { PreguntasService } from './preguntas.service';
 import { Preguntas } from './preguntas';
 import { ActivatedRoute } from '@angular/router';
-import { PuntosService } from '../puntos/puntos.service';
 import Swal from 'sweetalert2';
 import { Puntos } from './puntos';
 
