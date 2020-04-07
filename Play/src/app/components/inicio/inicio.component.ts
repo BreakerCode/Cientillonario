@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Credenciales } from '../credenciales';
 import { ActivatedRoute } from '@angular/router';
-import { PreguntasService } from '../preguntas/preguntas.service';
-import { Preguntas } from '../preguntas/preguntas';
+import { PreguntasService } from 'src/app/services/preguntas.service';
 
 @Component({
   selector: 'app-inicio',
