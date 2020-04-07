@@ -1,0 +1,22 @@
+<div class="row w-100 ml-0 bg-color-main">
+  <div class="header col-9">
+      <p class="ml-3 pt-3 h6 text-white">{{usuario}}</p>
+  </div>
+  <div class="col-3 text-right">
+    <button class="contador btn bg-white text-color-main mt-1 mb-1">60</button>
+  </div>
+</div>
+
+<div class="text-center">
+  <h5 class="mt-4 d-flex justify-content-center">
+    <p class="mx-3">Titulo de la pregunta respondida para probar un titulo largo</p>
+  </h5>
+  <img src="assets/img/correcto.jpg" alt="acierto" class="w-50">
+  <h2 class="text-success">¡CORRECTO!</h2>
+  <textarea rows="4" [(ngModel)]="usuario" disabled="true" class="form-control border border-success text-success"></textarea>
+  <div class="row mt-5 w-100 ml-0">
+    <button class="btn bg-color-main text-white col-3">Salir</button>
+    <button class="btn bg-color-main text-white col-6 offset-3">Siguiente Pregunta</button>
+  </div>
+
+</div>
