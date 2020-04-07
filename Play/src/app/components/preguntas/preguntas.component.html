@@ -25,12 +25,7 @@
 
 
 
-    <div class="footer" *ngIf="!esUltimaPregunta() else elseBlock">
-        <button *ngFor="let respuesta of pregunta.respuestas" class="btn bg-color-main text-white respuesta mt-1 w-100" [routerLink]="['/pregunta', idSiguiente]">{{respuesta.respuesta}}</button>
+    <div class="footer">
+        <button *ngFor="let respuesta of pregunta.respuestas" class="btn bg-color-main text-white respuesta mt-1 w-100" [routerLink]="['/explicacion']">{{respuesta.respuesta}}</button>
     </div>
-    <ng-template #elseBlock>
-      <div class="footer">
-          <button *ngFor="let respuesta of pregunta.respuestas" class="btn bg-color-main text-white respuesta mt-1 w-100" (click)="mandarPuntuacion()">{{respuesta.respuesta}}</button>
-      </div>
-    </ng-template>
 </div>

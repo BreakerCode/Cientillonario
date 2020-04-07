@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PreguntasService } from 'src/app/services/preguntas.service';
+import { Pregunta } from 'src/app/objects/pregunta';
 
 @Component({
   selector: 'app-inicio',
@@ -25,8 +26,12 @@ export class InicioComponent implements OnInit {
     })
   }
 
-  guardarUsuario():void {
+  jugar():void {
     localStorage.setItem('usuario', this.usuario);
+    localStorage['id']=1;
+    this.preguntasService.obtenerInfo().subscribe(info=>{
+        localStorage['preguntas'] =  JSON.stringify(info.items);
+    })
   }
 
 }

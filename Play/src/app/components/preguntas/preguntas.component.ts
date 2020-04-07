@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import Swal from 'sweetalert2';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Pregunta } from 'src/app/objects/pregunta';
 import { Puntos } from 'src/app/objects/puntos';
-import { PreguntasService } from 'src/app/services/preguntas.service';
 
 @Component({
   selector: 'app-preguntas',
@@ -14,12 +12,9 @@ export class PreguntasComponent implements OnInit {
   usuario: string;
   id: number;
   idSiguiente: number;
-  pregunta :Pregunta = new Pregunta();
-  preguntas :Pregunta[];
-  puntosTotales: any;
-  puntos: Puntos = new Puntos();
+  pregunta: Pregunta = new Pregunta();
 
-  constructor(private preguntasService: PreguntasService, private activatedRoute: ActivatedRoute) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.usuario = localStorage.getItem('usuario');
@@ -27,42 +22,17 @@ export class PreguntasComponent implements OnInit {
   }
 
   cargarPregunta(){
-    this.preguntasService.obtenerInfo().subscribe(info=>{
-        this.preguntas=info.items;
-
-        this.activatedRoute.params.subscribe(params => {
-
-          let id:number = params['id']
-          if(id){
-            this.id = id;
-            this.idSiguiente = id;
-            this.idSiguiente++;
-            this.pregunta = this.preguntas[id-1];
-          }
-        })
-    })
-  }
-
-  sumarId():void{
-    this.id++;
-  }
-
-  esUltimaPregunta(): boolean{
-    if(this.id == this.preguntas.length){
-      return true;
-    } else{
-      return false;
+    let id = localStorage['id'];
+    if(id){
+      this.id = id;
+      this.idSiguiente = id;
+      this.idSiguiente++;
+      this.pregunta = JSON.parse(localStorage['preguntas'])[this.id-1];
+    }
+    if(id>JSON.parse(localStorage['preguntas']).length){
+      this.router.navigate(['inicio'])
     }
   }
 
-  mandarPuntuacion(): void{
-      this.preguntasService.enviarPuntos(this.puntos).subscribe(response => {
-        Swal.fire(
-            '¡Puntuación enviada!',
-            `Has obtenido puntos`,
-            'success'
-        )
-      })
-  }
 
 }

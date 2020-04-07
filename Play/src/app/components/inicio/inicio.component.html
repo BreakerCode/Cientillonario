@@ -8,7 +8,7 @@
     <p class="text-center mt-4"><input size="35" [(ngModel)]="usuario" class="form-control text-center text-color-main" type="text" name="usuario" id="usuario"
             placeholder="Introduzca el nombre de usuario"></p>
 
-    <p class="text-center"><button class="btn button text-white mt-2 w-100" (click)="guardarUsuario()" [disabled]="!usuario" [routerLink]="['/pregunta/1']">Jugar</button></p>
+    <p class="text-center"><button class="btn button text-white mt-2 w-100" (click)="jugar()" [disabled]="!usuario" [routerLink]="['/pregunta']">Jugar</button></p>
     <p class="text-center"><button class="text-white button-tutorial btn">Tutorial</button></p>
 
     <div class="footer">

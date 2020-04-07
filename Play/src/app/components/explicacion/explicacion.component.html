@@ -9,14 +9,26 @@
 
 <div class="text-center">
   <h5 class="mt-4 d-flex justify-content-center">
-    <p class="mx-3">Titulo de la pregunta respondida para probar un titulo largo</p>
+    <p class="mx-3">{{pregunta.pregunta}}</p>
   </h5>
   <img src="assets/img/correcto.jpg" alt="acierto" class="w-50">
   <h2 class="text-success">¡CORRECTO!</h2>
-  <textarea rows="4" [(ngModel)]="usuario" disabled="true" class="form-control border border-success text-success"></textarea>
+  <textarea rows="4" [(ngModel)]="pregunta.explicacion" disabled="true" class="form-control border border-success text-success"></textarea>
   <div class="row mt-5 w-100 ml-0">
     <button class="btn bg-color-main text-white col-3">Salir</button>
-    <button class="btn bg-color-main text-white col-6 offset-3">Siguiente Pregunta</button>
+    <button class="btn bg-color-main text-white col-6 offset-3" *ngIf="!esUltimaPregunta() else elseBlock" (click)="pasarPregunta()" [routerLink]="['/pregunta']">Siguiente Pregunta</button>
+    <ng-template #elseBlock>
+      <button class="btn bg-color-main text-white col-6 offset-3" (click)="mandarPuntuacion()">Siguiente Pregunta</button>
+    </ng-template>
   </div>
+
+  <!--<div class="footer" *ngIf="!esUltimaPregunta() else elseBlock">
+      <button *ngFor="let respuesta of pregunta.respuestas" class="btn bg-color-main text-white respuesta mt-1 w-100" (click)="pasarPregunta()" [routerLink]="['/explicacion']">{{respuesta.respuesta}}</button>
+  </div>
+  <ng-template #elseBlock>
+    <div class="footer">
+        <button *ngFor="let respuesta of pregunta.respuestas" class="btn bg-color-main text-white respuesta mt-1 w-100" (click)="mandarPuntuacion()">{{respuesta.respuesta}}</button>
+    </div>
+  </ng-template> -->
 
 </div>
