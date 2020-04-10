@@ -26,6 +26,6 @@
 
 
     <div class="footer">
-        <button *ngFor="let respuesta of pregunta.respuestas" class="btn bg-color-main text-white respuesta mt-1 w-100" [routerLink]="['/explicacion']">{{respuesta.respuesta}}</button>
+        <button *ngFor="let respuesta of pregunta.respuestas" class="btn bg-color-main text-white respuesta mt-1 w-100" (click)="comprobarRespuesta(respuesta)" [routerLink]="['/explicacion']">{{respuesta.respuesta}}</button>
     </div>
 </div>

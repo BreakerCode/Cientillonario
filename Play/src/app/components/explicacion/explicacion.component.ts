@@ -44,4 +44,13 @@ export class ExplicacionComponent implements OnInit {
       })
   }
 
+  esCorrecta(): boolean{
+    if(localStorage["esCorrecta"] == "true"){
+      return true;
+    } else{
+      return false;
+    }
+
+  }
+
 }

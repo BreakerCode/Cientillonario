@@ -34,5 +34,9 @@ export class PreguntasComponent implements OnInit {
     }
   }
 
+  comprobarRespuesta(respuesta: any){
+    localStorage['esCorrecta'] = respuesta.correcta;
+  }
+
 
 }
