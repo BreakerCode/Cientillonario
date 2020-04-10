@@ -1,3 +1,7 @@
+html, body, .container{
+  height: 100%;
+}
+
 .header{
   height: 50px;
 }
@@ -38,9 +42,11 @@
 
 .footer{
   position: absolute;
+  left: 0px;
+  right: 0px;
   bottom: 0px;
-  width: 100%;
   text-align: center;
+
 }
 
 .text-color-main{
@@ -89,7 +95,7 @@ body {
   position: absolute;
   bottom: -41px;
   left: 75px;
-  transform: rotate(14deg);
+  transform: rotate(10deg);
 }
 
 .div-pregunta{
