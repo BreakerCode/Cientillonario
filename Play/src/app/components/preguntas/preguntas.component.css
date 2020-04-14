@@ -1,0 +1,103 @@
+
+
+.cientifico{
+  position:relative;
+  bottom: 0px;
+  height: 32%;
+  margin-bottom: 0px;
+  margin-top: -120px;
+}
+
+.comodines{
+  height: 60px;
+  width: 60px;
+  margin-right: 10px;
+}
+
+.pregunta{
+  overflow: scroll;
+  font-size: 14px;
+  margin-top: 1rem;
+
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.respuesta{
+  font-size: 14px;
+  white-space: normal;
+}
+
+.balloon{
+  position: relative;
+  text-align: center;
+  display: flex;
+   justify-content: center;
+   align-items: center;
+  height: 25%;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  border-radius: 50%;
+  box-shadow: 1px 12px 33px rgba(67, 127, 173, 0.5);
+}
+
+/*.balloon:before {
+  border: 25px solid white;
+  content: '';
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+  position: absolute;
+  bottom: -41px;
+  left: 75px;
+  transform: rotate(10deg);
+}*/
+
+.btn-respuesta{
+  padding: .5rem .75rem;
+  line-height: 1.5;
+}
+
+@media only screen and (min-device-width: 340px) and (max-device-width: 374px){
+  .btn-respuesta{
+    padding: .25rem .5rem;
+    line-height: 1.5;
+  }
+}
+
+@media only screen and (max-device-width: 340px){
+  .respuesta{
+    font-size: 12px;
+  }
+
+  .btn-respuesta{
+    padding: .15rem .25rem;
+  }
+
+  .pregunta{
+    overflow: scroll;
+    font-size: 12px;
+    margin-top: 1rem;
+
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+
+  .header{
+    height: 40px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  .contador{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+  }
+}

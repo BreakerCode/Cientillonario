@@ -1,6 +1,6 @@
 <div class="row w-100 ml-0 bg-color-main">
-  <div class="header col-9">
-      <p class="ml-3 pt-3 h6 text-white">{{usuario}}</p>
+  <div class="col-9 header">
+      <p class="ml-3 pt-3 text-white">{{usuario}}</p>
   </div>
   <div class="col-3 text-right">
     <button class="contador btn bg-white text-color-main mt-1 mb-1">60</button>
@@ -10,7 +10,7 @@
     <div class="text-right">
       <button class="contador btn text-white bg-color-main mt-2 mr-2">14</button>
     </div>
-    <div class="balloon text-color-main">
+    <div class="balloon text-color-main d-flex">
       <p class="pregunta">{{id}}. {{pregunta.pregunta}}</p>
     </div>
 
@@ -25,5 +25,5 @@
 
 
   <div class="footer">
-      <button *ngFor="let respuesta of pregunta.respuestas" class="btn btn-lg btn-block bg-color-main text-white respuesta mt-2" (click)="comprobarRespuesta(respuesta)" [routerLink]="['/explicacion']">{{respuesta.respuesta}}</button>
+      <button *ngFor="let respuesta of pregunta.respuestas" class="btn btn-respuesta btn-block bg-color-main text-white respuesta mt-2" (click)="comprobarRespuesta(respuesta)" [routerLink]="['/explicacion']">{{respuesta.respuesta}}</button>
   </div>

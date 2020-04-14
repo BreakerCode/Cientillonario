@@ -1,9 +1,10 @@
 html, body, .container{
   height: 100%;
 }
-
 .header{
   height: 50px;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .contador{
@@ -16,29 +17,6 @@ html, body, .container{
   font-size: 20px;
 }
 
-.cientifico{
-  height: 250px;
-  width: 175px;
-  margin-bottom: 0px;
-  margin-top: -120px;
-}
-
-.comodines{
-  height: 60px;
-  width: 60px;
-  margin-right: 10px;
-}
-
-.pregunta{
-  height: 60px;
-  overflow: scroll;
-  font-size: 12px;
-}
-
-.respuesta{
-  font-size: 14px;
-  white-space: normal;
-}
 
 .footer{
   position: absolute;
@@ -60,48 +38,4 @@ html, body, .container{
 body {
   --main-color: #084f86;
   color: var(--main-color);
-}
-
-.button, .button-tutorial{
-  background-color: var(--main-color);
-}
-
-.button{
-  height: 100px;
-}
-
-.balloon{
-  position: relative;
-  text-align: center;
-  margin-left: 5px;
-  margin-right: 5px;
-  margin-top: 0px;
-  margin-bottom: 20px;
-  border-radius: 50%;
-  font-size: 120%;
-  box-shadow: 1px 12px 33px rgba(67, 127, 173, 0.5);
-  padding-top:10%;
-  padding-left: 10%;
-  padding-right: 10%;
-  padding-bottom: 5%;
-}
-
-.balloon:before {
-  border: 25px solid white;
-  content: '';
-  border-left-color: transparent;
-  border-bottom-color: transparent;
-  border-right-color: transparent;
-  position: absolute;
-  bottom: -41px;
-  left: 75px;
-  transform: rotate(10deg);
-}
-
-.div-pregunta{
-  height: 60%;
-}
-
-.div-respuestas{
-  height: 40%;
 }

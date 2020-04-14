@@ -1,0 +1,7 @@
+.button, .button-tutorial{
+  background-color: var(--main-color);
+}
+
+.button{
+  height: 100px;
+}
