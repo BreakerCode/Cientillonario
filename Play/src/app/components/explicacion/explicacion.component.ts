@@ -35,13 +35,7 @@ export class ExplicacionComponent implements OnInit {
   }
 
   mandarPuntuacion(): void{
-      this.preguntasService.enviarPuntos(this.puntos).subscribe(response => {
-        Swal.fire(
-            '¡Puntuación enviada!',
-            `Has obtenido puntos`,
-            'success'
-        )
-      })
+      this.preguntasService.enviarPuntos(this.puntos);
   }
 
   esCorrecta(): boolean{
