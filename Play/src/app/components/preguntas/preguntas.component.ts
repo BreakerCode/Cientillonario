@@ -13,6 +13,7 @@ export class PreguntasComponent implements OnInit {
   id: number;
   idSiguiente: number;
   pregunta: Pregunta = new Pregunta();
+  disabledBomba: boolean = false;
 
   constructor(private router: Router) { }
 
@@ -36,6 +37,26 @@ export class PreguntasComponent implements OnInit {
 
   comprobarRespuesta(respuesta: any){
     localStorage['esCorrecta'] = respuesta.correcta;
+  }
+
+  bomba(){
+    if(!this.disabledBomba){
+      this.disabledBomba = true;
+      var anuladas: number[] = [];
+      while(anuladas.length!=2){
+        var index = Math.floor(Math.random() * 4)
+        var respuesta = this.pregunta.respuestas[index]
+        if(!respuesta.correcta && !anuladas.includes(index)){
+          anuladas.push(index)
+        }
+      }
+
+      anuladas.forEach(index => {
+        document.getElementById("respuesta"+index).setAttribute('disabled', 'disabled');
+      })
+    }
+
+
   }
 
 

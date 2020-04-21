@@ -18,12 +18,12 @@
       <img src="assets/img/bombilla.png" class="comodines p-2">
     </div>
     <div class="text-right">
-      <img src="assets/img/bomba.png" class="comodines">
+      <img src="assets/img/bomba.png" class="comodines" (click)="bomba()">
     </div>
   <img src="assets/img/cientifico.png" class="cientifico">
 
 
 
   <div class="footer">
-      <button *ngFor="let respuesta of pregunta.respuestas" class="btn btn-respuesta btn-block bg-color-main text-white respuesta mt-2" (click)="comprobarRespuesta(respuesta)" [routerLink]="['/explicacion']">{{respuesta.respuesta}}</button>
+      <button *ngFor="let respuesta of pregunta.respuestas; index as i" id="respuesta{{i}}" class="btn btn-respuesta btn-block bg-color-main text-white respuesta mt-2" (click)="comprobarRespuesta(respuesta)" [routerLink]="['/explicacion']">{{respuesta.respuesta}}</button>
   </div>
