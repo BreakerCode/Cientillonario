@@ -50,10 +50,10 @@ export class PreguntasComponent implements OnInit {
           anuladas.push(index)
         }
       }
-
       anuladas.forEach(index => {
         document.getElementById("respuesta"+index).setAttribute('disabled', 'disabled');
       })
+      document.getElementById("bomba").setAttribute("style", "opacity: 0.5;")
     }
 
 

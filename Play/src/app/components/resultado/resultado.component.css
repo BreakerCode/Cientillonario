@@ -1,8 +1,23 @@
 #container{
-  background-color: #90DEFF;
   top: 0px;
   right: 0px;
   bottom: 0px;
   left: 0px;
+}
 
+.pesoCerebro{
+  font-size: 22px;
+  font-weight: bold;
+  position: absolute;
+  top: 73%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 100%;
+  width: 33%;
+  height: 33%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: black 2px solid;
 }
