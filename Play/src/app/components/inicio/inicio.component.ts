@@ -23,15 +23,15 @@ export class InicioComponent implements OnInit {
         localStorage.setItem('invitation', invitation);
         localStorage.setItem('validation', invitation);
       }
+      localStorage['id']=1;
+      this.preguntasService.obtenerInfo().subscribe(info=>{
+          localStorage['preguntas'] =  JSON.stringify(info.items);
+      })
     })
   }
 
   jugar():void {
     localStorage.setItem('usuario', this.usuario);
-    localStorage['id']=1;
-    this.preguntasService.obtenerInfo().subscribe(info=>{
-        localStorage['preguntas'] =  JSON.stringify(info.items);
-    })
   }
 
 }
