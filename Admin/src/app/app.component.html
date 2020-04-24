@@ -1,7 +1,4 @@
-<div class="container my-3">
-  <div class="form-group">
-    <label for="porcentaje">Porcentaje: </label>
-    <input type="text" class="form-control" id="porcentaje" placeholder="Introduce porcentaje" [(ngModel)]="porcentaje.percent">
-  </div>
-  <button class="btn btn-primary" (click)="establecerPorcentaje(porcentaje)">Mandar porcentaje</button>
+<div id="wrapper">
+    <app-navegacion></app-navegacion>
+    <router-outlet></router-outlet>
 </div>

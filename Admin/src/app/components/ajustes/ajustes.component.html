@@ -1,0 +1,226 @@
+<div id="wrapper">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <p class="navbar-brand">Cientillonario</p>
+        </div>
+        <!-- /.navbar-header -->
+
+        <ul class="nav navbar-top-links navbar-right">
+
+            <!--BARRA NAVEGACION ARRIBA DERECHA (USER)-->
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-messages">
+                    <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    </li>
+                </ul>
+                <!-- /.dropdown-user -->
+            </li>
+        </ul>
+
+
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li>
+                        <a href="preguntas.html"><i class="fa fa-th-list"></i>  Preguntas </a>
+                    </li>
+                    <li>
+                        <a href="ajustes.html"><i class="glyphicon glyphicon-cog"></i>  Ajustes de Juego </a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-info-circle"></i>  Manual de Juego </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Ajustes</h1>
+            </div>
+        </div>
+
+        <!--PANEL TIEMPO PREGUNTA-->
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong> Tiempo por Pregunta </strong>
+                    </div>
+                    <div class="panel-body">
+                        <p class="text-primary">Seleccione el tiempo que desea para cada pregunta: </p>
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option>5</option>
+                                <option>10</option>
+                                <option>15</option>
+                                <option>20</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.panelTiempo -->
+
+            <!--PANEL MODO JUEGO-->
+            <div class="col-lg-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong> Modo de Juego </strong>
+                    </div>
+                    <div class="panel-body">
+                        <p class="text-primary">Seleccione el modo de juego que desea: </p>
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option>Arcade</option>
+                                <option>Survival</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.panelModo -->
+
+            <!--PANEL DIFICULTAD-->
+            <div class="col-lg-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong> Dificultad del Juego </strong>
+                    </div>
+                    <div class="panel-body">
+                        <p class="text-primary">Seleccione la dificultad de juego que desea: </p>
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option>Fácil</option>
+                                <option>Difícil</option>
+                                <option>Ambos</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.panelDificultad -->
+
+        <!--PANEL NUMPREGUNTAS-->
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong> Número de Preguntas </strong>
+                    </div>
+                    <div class="panel-body">
+                        <p class="text-primary">Seleccione el número de preguntas que desea: </p>
+                        <div class="form-group">
+                            <input class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.panelnumPreguntas -->
+
+            <!--PANEL CATEGORIA-->
+            <div class="col-lg-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong> Categoría </strong>
+                    </div>
+                    <div class="panel-body">
+                        <p class="text-primary">Seleccione la categoría que desea: </p>
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option>categoria1</option>
+                                <option>categoria2</option>
+                                <option>categoria3</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- /.panelCategoria -->
+
+        <!-- BOTON MOSTRAR -->
+        <div class="form-group" style="text-align:center">
+            <button type="submit" class="btn btn-primary">
+                <i _ngcontent-c3="" class="fa fa-search"></i>  Mostrar
+            </button>
+        </div>
+        <!-- /.panelBotonMostrar -->
+
+        <!-- PANEL LISTADO PREGUNTAS -->
+
+        <div class="row">
+            <div class="col-lg-6" style="width: 100%;">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong> Seleccionar Preguntas:  </strong>
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 7%;">Id</th>
+                                        <th>Título</th>
+                                        <th style="text-align: right;">Añadir</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Hola</td>
+                                        <td style="text-align: right;">
+                                            <label class="switch">
+                                                <input type="checkbox" checked="checked">
+                                                <span  class="slider round"></span>
+                                          </label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Pedris</td>
+                                        <td style="text-align: right;">
+                                            <label class="switch">
+                                                <input type="checkbox" checked="checked">
+                                                <span  class="slider round"></span>
+                                            </label>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--BOTON GUARDAR-->
+        <div class="form-group" style="text-align:center">
+            <button type="submit" class="btn btn-primary">
+            <i _ngcontent-c3="" class="fa fa-save"></i>  Guardar Cambios
+            </button>
+        </div>
+        <!-- /.botonGuardar -->
+    </div>
+</div>

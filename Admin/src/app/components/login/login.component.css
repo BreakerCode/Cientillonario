@@ -1,0 +1,121 @@
+.buttonRespuesta{
+        font-family: helvetica;
+        font-weight: bold;
+        font-size: 14px;
+        border-radius: 10px;
+        color: #ffffff;
+        background-color: #437fad;
+        align-items: left;
+        text-align: left;
+        width:100%;
+        height:45px;
+        text-decoration:none;
+        padding-top:15px;
+        padding-bottom:15px;
+    }
+
+.button {
+        text-decoration: none;
+        padding: 3px;
+        font-family: helvetica;
+        font-weight: bold;
+        font-size: 17px;
+        color: #ffffff;
+        background-color: #084f86;
+        border-radius: 15px;
+        text-align: center;
+        border: none;
+        align-items: center;
+        margin: 50px;
+        width:150px;
+        height:40px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        }
+
+        IMG.imgcenter{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        border:none;
+    }
+
+    .box-blue1 {
+        margin:-20px  50px;
+        overflow:hidden;
+        padding:5px;
+        margin-top: 30px;
+        margin-bottom: -30px;
+        border:1px solid #084f86;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        width:200px;
+        height:20px;
+
+
+        }
+
+        .box-blue2 {
+            margin:20px;
+            overflow:hidden;
+            padding:5px;
+            border:1px solid #084f86;
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+            width:200px;
+            height:20px;
+
+
+            }
+
+        .cuadroTexto{
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            size:"60";
+        }
+
+        .contenedorPrincipal{
+            width: 100%;
+            margin: 0 auto;
+            overflow: hidden;
+            box-sizing: border-box;
+            position:relative;
+
+        }
+
+        .rememberMe{
+            font-family: "Gabriola", cursive, sans-serif;
+
+            color:#084f86;
+            font-size: 120%;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: bold;
+            width:200px;
+            height:20px;
+
+            margin: 0 auto;
+            overflow: hidden;
+            box-sizing: border-box;
+            position:relative;
+        }
+
+        .tamañoLogin{
+            width: 100%;
+            margin: 0 auto;
+            overflow: hidden;
+            box-sizing: border-box;
+            position:relative;
+        }
+
+        .contenedor{
+            border: 1px solid #084f86;
+          width: 270px;
+          height: 320px;
+            margin: 0 auto;
+            overflow: hidden;
+            box-sizing: border-box;
+            position:relative;
+        }
