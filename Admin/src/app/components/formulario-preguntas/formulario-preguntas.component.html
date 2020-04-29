@@ -14,69 +14,116 @@
                         <strong>Formulario</strong>
                     </div>
                     <div class="panel-body">
-                        <form role="form">
+                        <form role="form" #preguntaForm="ngForm">
                             <div class="form-group">
-                                <p class="text-primary">Pregunta</p>
-                                <input class="form-control">
+                              <label for="pregunta" class="text-primary">Pregunta</label>
+                              <input class="form-control" name="pregunta" [(ngModel)]="pregunta.pregunta" #preguntaVal="ngModel" maxlength="200" required>
+                              <div class="alert alert-danger" *ngIf="preguntaVal.invalid && (preguntaVal.dirty || preguntaVal.touched)">
+                                <div *ngIf="preguntaVal.errors.required">
+                                  La pregunta es requerida.
+                                </div>
+                              </div>
                             </div>
                             <div class="form-group">
-                                <p class="text-primary">Respuesta Verdadera</p>
-                                <input class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <p class="text-primary">Respuesta Falsa</p>
-                                <input class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <p class="text-primary">Respuesta Falsa</p>
-                                <input class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <p class="text-primary">Respuesta Falsa</p>
-                                <input class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <p class="text-primary">Explicación de la Respuesta</p>
-                                <input class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <p class="text-primary">Pista</p>
-                                <input class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <p class="text-primary">Modo</p>
-                                <div class="form-group">
-                                    <select class="form-control">
-                                        <option>Fácil</option>
-                                        <option>Difícil</option>
-                                    </select>
+                                <label for="respuesta0" class="text-primary">Respuesta 1</label>
+                                <input type="radio" style="margin-left: 10px;" name="verdadera" value=0 [(ngModel)]="preguntaCorrecta" #verdaderaVal="ngModel" required>
+                                <label for="verdadera" >Verdadera</label>
+                                <input class="form-control" name="respuesta0" [(ngModel)]="pregunta.respuestas[0].respuesta" #respuesta0Val="ngModel" maxlength="42" required>
+                                <div class="alert alert-danger" *ngIf="respuesta0Val.invalid && (respuesta0Val.dirty ||respuesta0Val.touched)">
+                                  <div *ngIf="respuesta0Val.errors.required">
+                                    La respuesta es requerida.
+                                  </div>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <p class="text-primary">Categoría</p>
-                                <select class="form-control">
-                                    <option>categoria1</option>
-                                    <option>categoria2</option>
-                                    <option>categoria3</option>
-                                </select>
+                              <label for="respuesta1" class="text-primary">Respuesta 2</label>
+                              <input type="radio" style="margin-left: 10px;" name="verdadera" value=1 [(ngModel)]="preguntaCorrecta" #verdaderaVal="ngModel" required>
+                              <label for="verdadera" >Verdadera</label>
+                              <input class="form-control" name="respuesta1" [(ngModel)]="pregunta.respuestas[1].respuesta" #respuesta1Val="ngModel" maxlength="42" required>
+                              <div class="alert alert-danger" *ngIf="respuesta1Val.invalid && (respuesta1Val.dirty ||respuesta1Val.touched)">
+                                <div *ngIf="respuesta1Val.errors.required">
+                                  La respuesta es requerida.
+                                </div>
+                              </div>
                             </div>
+                            <div class="form-group">
+                              <label for="respuesta2" class="text-primary">Respuesta 3</label>
+                              <input type="radio" style="margin-left: 10px;" name="verdadera" value=2 [(ngModel)]="preguntaCorrecta" #verdaderaVal="ngModel" required>
+                              <label for="verdadera" >Verdadera</label>
+                              <input class="form-control" name="respuesta2" [(ngModel)]="pregunta.respuestas[2].respuesta" #respuesta2Val="ngModel" maxlength="42" required>
+                              <div class="alert alert-danger" *ngIf="respuesta2Val.invalid && (respuesta2Val.dirty ||respuesta2Val.touched)">
+                                <div *ngIf="respuesta2Val.errors.required">
+                                  La respuesta es requerida.
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label for="respuesta3" class="text-primary">Respuesta 4</label>
+                              <input type="radio" style="margin-left: 10px;" name="verdadera" value=3 [(ngModel)]="preguntaCorrecta" #verdaderaVal="ngModel" required>
+                              <label for="verdadera" >Verdadera</label>
+                              <input class="form-control" name="respuesta3" [(ngModel)]="pregunta.respuestas[3].respuesta" #respuesta3Val="ngModel" maxlength="42" required>
+                              <div class="alert alert-danger" *ngIf="respuesta3Val.invalid && (respuesta3Val.dirty ||respuesta3Val.touched)">
+                                <div *ngIf="respuesta3Val.errors.required">
+                                  La respuesta es requerida.
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label for="explicacion" class="text-primary">Explicación de la Respuesta</label>
+                              <input class="form-control" name="explicacion" [(ngModel)]="pregunta.explicacion" #explicacionVal="ngModel" required>
+                              <div class="alert alert-danger" *ngIf="explicacionVal.invalid && (explicacionVal.dirty ||explicacionVal.touched)">
+                                <div *ngIf="explicacionVal.errors.required">
+                                  La explicacion es requerida.
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label for="pista" class="text-primary">Pista</label>
+                              <input class="form-control" name="pista" [(ngModel)]="pregunta.pista" #pistaVal="ngModel" required>
+                              <div class="alert alert-danger" *ngIf="pistaVal.invalid && (pistaVal.dirty ||pistaVal.touched)">
+                                <div *ngIf="pistaVal.errors.required">
+                                  La pista es requerida.
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="modo" class="text-primary">Modo</label>
+                                <select name="modo" class="form-control"  [(ngModel)]="pregunta.modo" #modoVal="ngModel" required>
+                                    <option>Fácil</option>
+                                    <option>Difícil</option>
+                                </select>
+                                <div class="alert alert-danger" *ngIf="modoVal.invalid && (modoVal.dirty ||modoVal.touched)">
+                                  <div *ngIf="modoVal.errors.required">
+                                    El modo es requerido.
+                                  </div>
+                                </div>
+                            </div>
+
                         </form>
+
                     </div>
 
                 </div>
                 <!-- /.panelFormulario -->
             </div>
         </div>
-
+        <div class="alert alert-danger" *ngIf="verdaderaVal.invalid">
+          <div *ngIf="verdaderaVal.errors.required">
+            Es necesario seleccionar una respuesta como verdadera.
+          </div>
+        </div>
         <!--BOTON GUARDAR Y CANCELAR-->
         <div class="form-group">
-            <button class="btn btn-default" type="submit">
-                   <a href="preguntas.html" style="color:  #2e86c1  "><i _ngcontent-c3="" class="glyphicon glyphicon-ban-circle"></i> Cancelar</a>
+            <!-- /.botonCancelar -->
+            <button class="btn text-primary" type="submit" [routerLink]="['/preguntas']">
+              <i class="glyphicon glyphicon-ban-circle"></i> Cancelar
             </button>
-            <button class="btn btn-primary" type="submit">
-                    <a href="preguntas.html" style="color:white"><i _ngcontent-c3="" class="fa fa-save"></i> Guardar</a>
+            <!-- /.botonGuardar -->
+            <button class="btn btn-primary" type="submit" (click)="crearPregunta()" [disabled]="!preguntaForm.form.valid">
+              <i class="fa fa-save"></i> Guardar
             </button>
+
         </div>
-        <!-- /.botonGuardarCancelar -->
+
 
     </div>

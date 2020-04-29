@@ -4,7 +4,7 @@ export class Pregunta {
   pregunta: string;
   modo: string;
   categoria: string;
-  respuestas: [{respuesta: string, correcta: boolean}];
+  respuestas: {respuesta: string, correcta: boolean}[];
   pista: string;
   explicacion: string;
 }

@@ -15,6 +15,10 @@ export class PreguntasService {
   constructor(private http: HttpClient) {
   }
 
+  create(pregunta: Pregunta): Observable<any> {
+    return this.http.post<any>(this.urlEndPoint, pregunta, {headers: this.httpHeaders})
+  }
+
   getPreguntas(): Observable<Pregunta[]> {
     return this.http.get<Pregunta[]>(`${this.urlEndPoint}`, {headers: this.httpHeaders});
   }
