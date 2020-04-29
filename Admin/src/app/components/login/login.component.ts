@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario, TokenUsuario } from '../../interfaces/usuario-interfaces';
 import { format } from 'url';
-import { UsuarioService } from '../../services/usuario.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +12,6 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  token: TokenUsuario;
 
   usuario: Usuario = {
 
@@ -22,7 +21,7 @@ export class LoginComponent implements OnInit {
 
   };
 
-  constructor(private usuarioService: UsuarioService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -50,10 +49,10 @@ export class LoginComponent implements OnInit {
     } else {
 
 
-      await this.usuarioService.login(this.usuario).then(respuesta =>{
+      await this.authService.login(this.usuario).then(respuesta =>{
 
-        this.token = respuesta;
-        console.log(this.token);
+        const token = respuesta;
+        this.authService.guardarToken(token.token);
         this.router.navigateByUrl('/preguntas')
 
       }).catch(error => {
@@ -66,7 +65,6 @@ export class LoginComponent implements OnInit {
         });
 
       });
-      console.log('Token: ', this.token);
 
     }
 
