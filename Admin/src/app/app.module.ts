@@ -10,6 +10,7 @@ import { LoginComponent } from './components/login/login.component';
 import { PreguntasComponent } from './components/preguntas/preguntas.component';
 import { AjustesComponent } from './components/ajustes/ajustes.component';
 import { NavegacionComponent } from './components/navegacion/navegacion.component';
+import { PreguntasService } from './services/preguntas.service';
 
 const routes: Routes = [
   {path: 'preguntas', component: PreguntasComponent},
@@ -33,7 +34,7 @@ const routes: Routes = [
     FormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [PreguntasService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
