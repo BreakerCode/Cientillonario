@@ -24,10 +24,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
+              "src/styles.css"
             ],
-            "scripts": [
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -120,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Admin"
+    }
+  },
+  "defaultProject": "Admin",
+  "cli": {
+    "analytics": "184afe22-c6f7-49bd-b43c-0aebc13b7cc7"
+  }
 }
