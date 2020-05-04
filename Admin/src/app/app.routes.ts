@@ -11,6 +11,7 @@ const APP_ROUTES: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'preguntas/form', component: FormularioPreguntasComponent, canActivate: [ AuthGuard ]},
+  {path: 'preguntas/form/:id', component: FormularioPreguntasComponent, canActivate: [ AuthGuard ]},
 ];
 
 export const APP_ROUTING = RouterModule.forRoot(APP_ROUTES);

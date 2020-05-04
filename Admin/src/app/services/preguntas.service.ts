@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Pregunta } from '../objects/pregunta';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +13,13 @@ export class PreguntasService {
 
   private httpHeaders = new HttpHeaders({'Content-Type':'application/json'});
 
-  private token = "?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkaXNwbGF5bmFtZSI6InVjYW0xIiwiZ2FtZSI6InVjYW0xIiwidXNlcm5hbWUiOiJ1Y2FtMSIsImlhdCI6MTU4MzI1MzIwM30.YFvtz2A5VFFZWfZ9P0WACurNY7lcE0PL4KTLj8O08H0"
+  private token;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private authService: AuthService) {
+    authService.leerToken();
+
+    this.token = "?token="+authService.userToken;
+    console.log(this.token)
   }
 
   create(pregunta: Pregunta): Observable<any> {
