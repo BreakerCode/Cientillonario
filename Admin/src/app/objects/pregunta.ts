@@ -1,5 +1,5 @@
 export class Pregunta {
-  id: string;
+  _id: string;
   publish: boolean;
   pregunta: string;
   modo: string;

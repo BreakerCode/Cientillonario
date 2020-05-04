@@ -33,12 +33,12 @@
                   <input type="checkbox" [(ngModel)]="pregunta.publish" disabled>
                 <td>{{pregunta.modo}}</td>
                 <td style="float: right;">
-                  <button class="btn btn-sm btn-danger" style="width: 100px;">
+                  <button class="btn btn-sm btn-danger" (click)="eliminarPregunta(pregunta)" style="width: 100px;">
                     <i  class="fa fa-trash-o"></i> Eliminar
                   </button>
                 </td>
                 <td style="float: right;">
-                  <button class="btn btn-sm btn-primary" [routerLink]="['/preguntas/form']" style="margin-right: 10px; width: 100px;">
+                  <button class="btn btn-sm btn-primary" [routerLink]="['/preguntas/form', pregunta._id]" style="margin-right: 10px; width: 100px;">
                     <i _ngcontent-c3="" class="fa fa-edit"></i> Editar
                 </button>
                 </td>

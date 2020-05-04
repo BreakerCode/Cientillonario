@@ -18,6 +18,7 @@ const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'preguntas/form', component: FormularioPreguntasComponent},
+  {path: 'preguntas/form/:id', component: FormularioPreguntasComponent},
 ];
 @NgModule({
   declarations: [

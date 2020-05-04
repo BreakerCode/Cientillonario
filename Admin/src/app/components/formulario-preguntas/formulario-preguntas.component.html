@@ -2,7 +2,10 @@
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Editar</h1>
+                <h1 class="page-header" *ngIf="!pregunta._id else editarPregunta">Crear Pregunta</h1>
+                <ng-template #editarPregunta>
+                  <h1 class="page-header">Editar Pregunta</h1>
+                </ng-template>
             </div>
         </div>
 
@@ -26,7 +29,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="respuesta0" class="text-primary">Respuesta 1</label>
-                                <input type="radio" style="margin-left: 10px;" name="verdadera" value=0 [(ngModel)]="preguntaCorrecta" #verdaderaVal="ngModel" required>
+                                <input id="verdadera0" type="radio" style="margin-left: 10px;" name="verdadera" [value]=0 [(ngModel)]="preguntaCorrecta"  #verdaderaVal="ngModel" required>
                                 <label for="verdadera" >Verdadera</label>
                                 <input class="form-control" name="respuesta0" [(ngModel)]="pregunta.respuestas[0].respuesta" #respuesta0Val="ngModel" maxlength="42" required>
                                 <div class="alert alert-danger" *ngIf="respuesta0Val.invalid && (respuesta0Val.dirty ||respuesta0Val.touched)">
@@ -37,7 +40,7 @@
                             </div>
                             <div class="form-group">
                               <label for="respuesta1" class="text-primary">Respuesta 2</label>
-                              <input type="radio" style="margin-left: 10px;" name="verdadera" value=1 [(ngModel)]="preguntaCorrecta" #verdaderaVal="ngModel" required>
+                              <input id="verdadera1" type="radio" style="margin-left: 10px;" name="verdadera" [value]=1 [(ngModel)]="preguntaCorrecta" #verdaderaVal="ngModel" required>
                               <label for="verdadera" >Verdadera</label>
                               <input class="form-control" name="respuesta1" [(ngModel)]="pregunta.respuestas[1].respuesta" #respuesta1Val="ngModel" maxlength="42" required>
                               <div class="alert alert-danger" *ngIf="respuesta1Val.invalid && (respuesta1Val.dirty ||respuesta1Val.touched)">
@@ -48,7 +51,7 @@
                             </div>
                             <div class="form-group">
                               <label for="respuesta2" class="text-primary">Respuesta 3</label>
-                              <input type="radio" style="margin-left: 10px;" name="verdadera" value=2 [(ngModel)]="preguntaCorrecta" #verdaderaVal="ngModel" required>
+                              <input id="verdadera2" type="radio" style="margin-left: 10px;" name="verdadera" [value]=2 [(ngModel)]="preguntaCorrecta" #verdaderaVal="ngModel" required>
                               <label for="verdadera" >Verdadera</label>
                               <input class="form-control" name="respuesta2" [(ngModel)]="pregunta.respuestas[2].respuesta" #respuesta2Val="ngModel" maxlength="42" required>
                               <div class="alert alert-danger" *ngIf="respuesta2Val.invalid && (respuesta2Val.dirty ||respuesta2Val.touched)">
@@ -59,7 +62,7 @@
                             </div>
                             <div class="form-group">
                               <label for="respuesta3" class="text-primary">Respuesta 4</label>
-                              <input type="radio" style="margin-left: 10px;" name="verdadera" value=3 [(ngModel)]="preguntaCorrecta" #verdaderaVal="ngModel" required>
+                              <input id="verdadera3" type="radio" style="margin-left: 10px;" name="verdadera" [value]=3 [(ngModel)]="preguntaCorrecta" #verdaderaVal="ngModel" required>
                               <label for="verdadera" >Verdadera</label>
                               <input class="form-control" name="respuesta3" [(ngModel)]="pregunta.respuestas[3].respuesta" #respuesta3Val="ngModel" maxlength="42" required>
                               <div class="alert alert-danger" *ngIf="respuesta3Val.invalid && (respuesta3Val.dirty ||respuesta3Val.touched)">
@@ -119,9 +122,14 @@
               <i class="glyphicon glyphicon-ban-circle"></i> Cancelar
             </button>
             <!-- /.botonGuardar -->
-            <button class="btn btn-primary" type="submit" (click)="crearPregunta()" [disabled]="!preguntaForm.form.valid">
-              <i class="fa fa-save"></i> Guardar
+            <button class="btn btn-primary" type="submit" (click)="crearPregunta()" [disabled]="!preguntaForm.form.valid" *ngIf="!pregunta._id else buttonEditar">
+              <i class="fa fa-save"></i> Crear
             </button>
+            <ng-template #buttonEditar>
+              <button class="btn btn-primary" type="submit" (click)="updatePregunta()" [disabled]="!preguntaForm.form.valid">
+                <i class="fa fa-save"></i> Editar
+              </button>
+            </ng-template>
 
         </div>
 
