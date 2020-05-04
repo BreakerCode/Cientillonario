@@ -7,15 +7,17 @@
     </div>
 
     <div class="row">
-        <table class="table table-condensed">
+        <div class="col-lg-6" style="width: 100%;">
+            <div class="panel panel-default">
+
+        <table class="table table-condensed card-table table-bordered table-striped">
             <thead>
-                <tr >
-                    <th>Id</th>
+                <tr>
                     <th>Titulo</th>
                     <th>Categoría</th>
                     <th>Incluida</th>
                     <th>Modo</th>
-                    <th>
+                    <th style="float: right;">
                       <button class="btn btn-sm btn-success" [routerLink]="['/preguntas/form']" style="width: 100px;">
                         <i class="fa fa-gamepad"></i> Nuevo
                       </button>
@@ -24,23 +26,26 @@
             </thead>
 
             <tbody>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+              <tr *ngFor="let pregunta of preguntas">
+                <td>{{pregunta.pregunta}}</td>
+                <td>{{pregunta.categoria}}</td>
                 <td>
-                    <button class="btn btn-sm btn-primary" [routerLink]="['/preguntas/form']" style="margin-right: 10px; width: 100px;">
-                        <i _ngcontent-c3="" class="fa fa-edit"></i> Editar
-                    </button>
-                    <button class="btn btn-sm btn-danger" style="width: 100px;">
-                      <i  class="fa fa-trash-o"></i> Eliminar
-                    </button>
+                  <input type="checkbox" [(ngModel)]="pregunta.publish" disabled>
+                <td>{{pregunta.modo}}</td>
+                <td style="float: right;">
+                  <button class="btn btn-sm btn-danger" (click)="eliminarPregunta(pregunta)" style="width: 100px;">
+                    <i  class="fa fa-trash-o"></i> Eliminar
+                  </button>
+                </td>
+                <td style="float: right;">
+                  <button class="btn btn-sm btn-primary" [routerLink]="['/preguntas/form', pregunta._id]" style="margin-right: 10px; width: 100px;">
+                    <i _ngcontent-c3="" class="fa fa-edit"></i> Editar
+                </button>
                 </td>
               </tr>
-
             </tbody>
         </table>
+     </div>
+    </div>
     </div>
 </div>
