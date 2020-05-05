@@ -6,114 +6,79 @@
             </div>
         </div>
 
-        <!--PANEL TIEMPO PREGUNTA-->
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <strong> Tiempo por Pregunta </strong>
-                    </div>
-                    <div class="panel-body">
-                        <p class="text-primary">Seleccione el tiempo que desea para cada pregunta: </p>
-                        <div class="form-group">
-                            <select class="form-control">
-                                <option>5</option>
-                                <option>10</option>
-                                <option>15</option>
-                                <option>20</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- /.panelTiempo -->
+        <form name="ajustesForm" role="form" #ajustesForm="ngForm">
+          <div class="row">
+              <!--PANEL TIEMPO PREGUNTA-->
+              <div class="col-lg-4">
+                  <div class="panel panel-default">
+                      <div class="panel-heading">
+                          <strong> Tiempo por Pregunta </strong>
+                      </div>
+                      <div class="panel-body">
+                          <p class="text-primary">Seleccione el tiempo que desea para cada pregunta: </p>
+                          <div class="form-group">
+                              <input type="number" class="form-control" name="tiempo" [(ngModel)]="ajustes.tiempo" #tiempoVal="ngModel" min="10" max="50" required>
+                              <div class="alert alert-danger" *ngIf="tiempoVal.invalid && (tiempoVal.dirty || tiempoVal.touched)">
+                                <div *ngIf="tiempoVal.errors.required">
+                                  El tiempo es requerido.
+                                </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <!-- /.panelTiempo -->
 
-            <!--PANEL MODO JUEGO-->
-            <div class="col-lg-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <strong> Modo de Juego </strong>
-                    </div>
-                    <div class="panel-body">
-                        <p class="text-primary">Seleccione el modo de juego que desea: </p>
-                        <div class="form-group">
-                            <select class="form-control">
-                                <option>Arcade</option>
-                                <option>Survival</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- /.panelModo -->
+              <!--PANEL MODO JUEGO-->
+              <div class="col-lg-4">
+                  <div class="panel panel-default">
+                      <div class="panel-heading">
+                          <strong> Modo de Juego </strong>
+                      </div>
+                      <div class="panel-body">
+                          <p class="text-primary">Seleccione el modo de juego que desea: </p>
+                          <div class="form-group">
+                              <select class="form-control" name="modo" [(ngModel)]="ajustes.modo" #modoVal="ngModel" required>
+                                  <option value="Arcade">Arcade</option>
+                                  <option value="Survival">Survival</option>
+                              </select>
+                              <div class="alert alert-danger" *ngIf="modoVal.invalid && (modoVal.dirty || modoVal.touched)">
+                                <div *ngIf="modoVal.errors.required">
+                                  El modo es requerido.
+                                </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <!-- /.panelModo -->
 
-            <!--PANEL DIFICULTAD-->
-            <div class="col-lg-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <strong> Dificultad del Juego </strong>
-                    </div>
-                    <div class="panel-body">
-                        <p class="text-primary">Seleccione la dificultad de juego que desea: </p>
-                        <div class="form-group">
-                            <select class="form-control">
-                                <option>Fácil</option>
-                                <option>Difícil</option>
-                                <option>Ambos</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /.panelDificultad -->
-
-        <!--PANEL NUMPREGUNTAS-->
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <strong> Número de Preguntas </strong>
-                    </div>
-                    <div class="panel-body">
-                        <p class="text-primary">Seleccione el número de preguntas que desea: </p>
-                        <div class="form-group">
-                            <input class="form-control">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- /.panelnumPreguntas -->
-
-            <!--PANEL CATEGORIA-->
-            <div class="col-lg-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <strong> Categoría </strong>
-                    </div>
-                    <div class="panel-body">
-                        <p class="text-primary">Seleccione la categoría que desea: </p>
-                        <div class="form-group">
-                            <select class="form-control">
-                                <option>categoria1</option>
-                                <option>categoria2</option>
-                                <option>categoria3</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- /.panelCategoria -->
-
-        <!-- BOTON MOSTRAR -->
-        <div class="form-group" style="text-align:center">
-            <button type="submit" class="btn btn-primary">
-                <i _ngcontent-c3="" class="fa fa-search"></i>  Mostrar
-            </button>
-        </div>
-        <!-- /.panelBotonMostrar -->
+              <!--PANEL DIFICULTAD-->
+              <div class="col-lg-4">
+                  <div class="panel panel-default">
+                      <div class="panel-heading">
+                          <strong> Dificultad del Juego </strong>
+                      </div>
+                      <div class="panel-body">
+                          <p class="text-primary">Seleccione la dificultad de juego que desea: </p>
+                          <div class="form-group">
+                              <select class="form-control" name="dificultad" [(ngModel)]="ajustes.dificultad" #dificultadVal="ngModel" required (change)="cambioDificultad()">
+                                  <option value="Fácil">Fácil</option>
+                                  <option value="Difícil">Difícil</option>
+                                  <option value="Ambas">Ambas</option>
+                              </select>
+                              <div class="alert alert-danger" *ngIf="dificultadVal.invalid && (dificultadVal.dirty || dificultadVal.touched)">
+                                <div *ngIf="dificultadVal.errors.required">
+                                  La dificutlad es requerida.
+                                </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <!-- /.panelDificultad -->
+        </form>
 
         <!-- PANEL LISTADO PREGUNTAS -->
 
@@ -129,30 +94,18 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th style="width: 7%;">Id</th>
                                         <th>Título</th>
                                         <th style="text-align: right;">Añadir</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Hola</td>
+                                    <tr *ngFor="let pregunta of preguntasFiltradas">
+                                        <td>{{pregunta.pregunta}}</td>
                                         <td style="text-align: right;">
-                                            <label class="switch">
-                                                <input type="checkbox" checked="checked">
-                                                <span  class="slider round"></span>
-                                          </label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Pedris</td>
-                                        <td style="text-align: right;">
-                                            <label class="switch">
-                                                <input type="checkbox" checked="checked">
-                                                <span  class="slider round"></span>
-                                            </label>
+                                            <button class="btn btn-sm btn-success" *ngIf="!incluida(pregunta._id) else noIncluida" (click)="addPregunta(pregunta._id)">Añadir</button>
+                                            <ng-template #noIncluida>
+                                              <button class="btn btn-sm btn-danger" (click)="deletePregunta(pregunta._id)">Eliminar</button>
+                                            </ng-template>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -164,8 +117,8 @@
         </div>
         <!--BOTON GUARDAR-->
         <div class="form-group" style="text-align:center">
-            <button type="submit" class="btn btn-primary">
-            <i _ngcontent-c3="" class="fa fa-save"></i>  Guardar Cambios
+            <button type="submit" class="btn btn-primary"  (click)="guardarCambios()" [disabled]="!ajustesForm.form.valid || ajustes.preguntas.length<5">
+            <i class="fa fa-save"></i>  Guardar Cambios
             </button>
         </div>
         <!-- /.botonGuardar -->

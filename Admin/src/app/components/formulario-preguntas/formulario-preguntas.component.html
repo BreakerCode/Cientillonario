@@ -92,8 +92,8 @@
                             <div class="form-group">
                                 <label for="modo" class="text-primary">Modo</label>
                                 <select name="modo" class="form-control"  [(ngModel)]="pregunta.modo" #modoVal="ngModel" required>
-                                    <option>Fácil</option>
-                                    <option>Difícil</option>
+                                    <option value="Fácil">Fácil</option>
+                                    <option value="Difícil">Difícil</option>
                                 </select>
                                 <div class="alert alert-danger" *ngIf="modoVal.invalid && (modoVal.dirty ||modoVal.touched)">
                                   <div *ngIf="modoVal.errors.required">
