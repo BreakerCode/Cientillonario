@@ -1,6 +1,6 @@
 export class Pregunta {
   _id: string;
-  publish: boolean;
+  publish: boolean = true;
   pregunta: string;
   modo: string;
   categoria: string;

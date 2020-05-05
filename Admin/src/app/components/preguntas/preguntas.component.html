@@ -15,7 +15,6 @@
                 <tr>
                     <th>Titulo</th>
                     <th>Categoría</th>
-                    <th>Incluida</th>
                     <th>Modo</th>
                     <th style="float: right;">
                       <button class="btn btn-sm btn-success" [routerLink]="['/preguntas/form']" style="width: 100px;">
@@ -29,8 +28,6 @@
               <tr *ngFor="let pregunta of preguntas">
                 <td>{{pregunta.pregunta}}</td>
                 <td>{{pregunta.categoria}}</td>
-                <td>
-                  <input type="checkbox" [(ngModel)]="pregunta.publish" disabled>
                 <td>{{pregunta.modo}}</td>
                 <td style="float: right;">
                   <button class="btn btn-sm btn-danger" (click)="eliminarPregunta(pregunta)" style="width: 100px;">
