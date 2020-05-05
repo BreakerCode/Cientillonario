@@ -9,8 +9,8 @@ import { Pregunta } from 'src/app/objects/pregunta';
   styleUrls: ['./inicio.component.css']
 })
 export class InicioComponent implements OnInit {
-
- usuario: string;
+  
+  usuario: string;
 
   constructor(private activatedRoute: ActivatedRoute, private preguntasService: PreguntasService) { }
 
@@ -25,7 +25,10 @@ export class InicioComponent implements OnInit {
       }
       localStorage['id']=1;
       this.preguntasService.obtenerInfo().subscribe(info=>{
-          localStorage['preguntas'] =  JSON.stringify(info.items);
+          localStorage['tiempo'] = info.config.tiempo;
+          var preguntas: Pregunta[] = info.items
+          preguntas = preguntas.filter(pregunta => (<string[]>info.config.preguntas).includes(pregunta._id))
+          localStorage['preguntas'] =  JSON.stringify(preguntas);
       })
     })
   }

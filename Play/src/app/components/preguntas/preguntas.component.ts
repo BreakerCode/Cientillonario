@@ -9,6 +9,7 @@ import { Puntos } from 'src/app/objects/puntos';
   styleUrls: ['./preguntas.component.css']
 })
 export class PreguntasComponent implements OnInit {
+  tiempo: number;
   usuario: string;
   id: number;
   idSiguiente: number;
@@ -18,8 +19,24 @@ export class PreguntasComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+    this.tiempo = localStorage['tiempo'];
+    this.tiempo++;
     this.usuario = localStorage.getItem('usuario');
     this.cargarPregunta();
+    this.updateClock();
+
+  }
+
+  updateClock(): void{
+    if(this.tiempo==0){
+      localStorage['esCorrecta'] = false;
+      this.router.navigate(['/explicacion'])
+    }else{
+      this.tiempo-=1;
+      setTimeout( () =>{
+        this.updateClock()
+      } , 1000)
+    }
   }
 
   cargarPregunta(){
