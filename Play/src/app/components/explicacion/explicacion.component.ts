@@ -11,6 +11,7 @@ import { Pregunta } from 'src/app/objects/pregunta';
 })
 export class ExplicacionComponent implements OnInit {
 
+  modo: string;
   puntuacion: number;
   usuario: string;
   puntos: Puntos = new Puntos();
@@ -22,6 +23,7 @@ export class ExplicacionComponent implements OnInit {
     this.puntuacion = localStorage['puntuacion'];
     this.usuario = localStorage.getItem('usuario');
     this.pregunta = JSON.parse(localStorage['preguntas'])[parseInt(localStorage['id'])-1];
+    this.modo = localStorage['modo'];
   }
 
   pasarPregunta():void {
@@ -29,11 +31,18 @@ export class ExplicacionComponent implements OnInit {
   }
 
   esUltimaPregunta(): boolean{
-    if(localStorage['id'] == JSON.parse(localStorage['preguntas']).length){
-      return true;
+    if(this.modo=='Arcade'){
+      if(localStorage['id'] == JSON.parse(localStorage['preguntas']).length){
+        return true;
+      } else{
+        return false;
+      }
     } else{
-      return false;
+      if(!this.esCorrecta()){
+        return true;
+      }
     }
+
   }
 
   mandarPuntuacion(): void{

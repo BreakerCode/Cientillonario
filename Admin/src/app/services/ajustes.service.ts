@@ -19,15 +19,14 @@ export class AjustesService {
     authService.leerToken();
 
     this.token = "?token="+authService.userToken;
-    console.log(this.token)
   }
 
-  getConfig(): Observable<Ajustes> {
-    return this.http.get<Ajustes>(`${this.urlEndPoint}${this.token}`, {headers: this.httpHeaders});
+  getConfig(): Observable<any> {
+    return this.http.get<any>(`${this.urlEndPoint}${this.token}`, {headers: this.httpHeaders});
   }
 
-  putConfig(ajustes:Ajustes): Observable<any> {
-    return this.http.put<Ajustes>(`${this.urlEndPoint}${this.token}`,ajustes ,{headers: this.httpHeaders});
+  putConfig(ajustes:any): Observable<any> {
+    return this.http.put<any>(`${this.urlEndPoint}${this.token}`,ajustes ,{headers: this.httpHeaders});
   }
 
 }
