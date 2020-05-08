@@ -11,6 +11,7 @@ import { Pregunta } from 'src/app/objects/pregunta';
 })
 export class ExplicacionComponent implements OnInit {
 
+  puntuacion: number;
   usuario: string;
   puntos: Puntos = new Puntos();
   pregunta: Pregunta = new Pregunta();
@@ -18,6 +19,7 @@ export class ExplicacionComponent implements OnInit {
   constructor(private preguntasService: PreguntasService) { }
 
   ngOnInit(): void {
+    this.puntuacion = localStorage['puntuacion'];
     this.usuario = localStorage.getItem('usuario');
     this.pregunta = JSON.parse(localStorage['preguntas'])[parseInt(localStorage['id'])-1];
   }

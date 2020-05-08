@@ -3,11 +3,16 @@
   <h4 class="my-3">El peso de tu cerebro es de: </h4>
   <div class="position-relative">
     <img src="/assets/img/pesocerebro.png" alt="cerebro" class="w-75">
-    <div class="pesoCerebro">2000g</div>
+    <div class="pesoCerebro"><p class="mb-5">{{puntuacion}}g</p></div>
+    <p class="pesoMaximo">{{puntuacionMax}}g</p>
   </div>
 
-  <p class="text-success mt-4 h5">¡MUY BIEN! Tu cerebro es muy gordo. Sigue así, entrena para poder mantener ese peso.</p>
+  <p id="frase" class="mt-4 h5">{{frase}}</p>
   <div class="footer">
-    <button class="btn btn-lg bg-color-main text-white mb-4" [routerLink]="['/inicio']">Salir</button>
+    <div class="row mx-2">
+      <button class="btn btn-lg bg-color-main text-white mb-4 col-4" [routerLink]="['/inicio']">Salir</button>
+      <button class="btn btn-lg bg-color-main text-white mb-4 col-4 offset-4" [routerLink]="['/ranking']">Ranking</button>
+    </div>
+
   </div>
 </div>

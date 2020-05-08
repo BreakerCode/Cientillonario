@@ -9,6 +9,9 @@ import { Puntos } from 'src/app/objects/puntos';
   styleUrls: ['./preguntas.component.css']
 })
 export class PreguntasComponent implements OnInit {
+  puntuacion: number;
+  tiempo: number;
+  tiempoActual: number;
   usuario: string;
   id: number;
   idSiguiente: number;
@@ -18,8 +21,28 @@ export class PreguntasComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+    this.puntuacion = localStorage['puntuacion'];
+    this.tiempo = localStorage['tiempo'];
+    this.tiempoActual = this.tiempo;
+    this.tiempoActual++;
     this.usuario = localStorage.getItem('usuario');
     this.cargarPregunta();
+    this.updateClock();
+
+  }
+
+  updateClock(): void{
+    if(this.tiempoActual != -1){
+      if(this.tiempoActual==0){
+        localStorage['esCorrecta'] = false;
+        this.router.navigate(['/explicacion'])
+      }else{
+        this.tiempoActual-=1;
+        setTimeout( () =>{
+          this.updateClock()
+        } , 1000)
+      }
+    }
   }
 
   cargarPregunta(){
@@ -36,6 +59,18 @@ export class PreguntasComponent implements OnInit {
   }
 
   comprobarRespuesta(respuesta: any){
+    let duracion = this.tiempoActual;
+    this.tiempoActual = -1
+    if(respuesta.correcta){
+      let puntuacionPregunta: number = localStorage['puntuacionPregunta'];
+      let tiempoPorcentaje = duracion / this.tiempo;
+      if(tiempoPorcentaje < 0.33){
+        puntuacionPregunta = puntuacionPregunta * 0.5;
+      } else if(tiempoPorcentaje < 0.66){
+        puntuacionPregunta = puntuacionPregunta * 0.75;
+      }
+      localStorage['puntuacion'] = Number(this.puntuacion) + Number(puntuacionPregunta);
+    }
     localStorage['esCorrecta'] = respuesta.correcta;
   }
 

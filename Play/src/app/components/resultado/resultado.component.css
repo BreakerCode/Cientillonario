@@ -21,3 +21,21 @@
   justify-content: center;
   border: black 2px solid;
 }
+
+
+.pesoMaximo{
+  font-size: 22px;
+  font-weight: bold;
+  position: absolute;
+  top: 78%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: var(--main-color) 2px solid;
+}
+
+.text-orange{
+  color: orange;
+}

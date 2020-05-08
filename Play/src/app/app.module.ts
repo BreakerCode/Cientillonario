@@ -10,6 +10,7 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { PreguntasComponent } from './components/preguntas/preguntas.component';
 import { PreguntasService } from './services/preguntas.service';
 import { ResultadoComponent } from './components/resultado/resultado.component';
+import { RankingComponent } from './components/ranking/ranking.component';
 
 const routes: Routes = [
   {path: '', component: InicioComponent},
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'pregunta', component: PreguntasComponent},
   {path: 'explicacion', component: ExplicacionComponent},
   {path: 'resultado', component: ResultadoComponent},
+  {path: 'ranking', component: RankingComponent},
 ];
 
 @NgModule({
@@ -25,7 +27,8 @@ const routes: Routes = [
     PreguntasComponent,
     InicioComponent,
     ExplicacionComponent,
-    ResultadoComponent
+    ResultadoComponent,
+    RankingComponent
   ],
   imports: [
     BrowserModule,
