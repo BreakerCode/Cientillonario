@@ -5,3 +5,13 @@
 .button{
   height: 100px;
 }
+
+@media only screen and (max-device-width: 340px){
+  .modo-juego{
+    font-size: 10px;
+  }
+
+  .button{
+    height: 60px;
+  }
+}

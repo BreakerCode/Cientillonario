@@ -19,7 +19,6 @@ export class PreguntasService {
     authService.leerToken();
 
     this.token = "?token="+authService.userToken;
-    console.log(this.token)
   }
 
   create(pregunta: Pregunta): Observable<any> {

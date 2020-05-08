@@ -25,7 +25,6 @@
   </ng-template>
 
   <div class="row mt-5 w-100 ml-0" *ngIf="!esUltimaPregunta() else elseBlock">
-    <button class="btn bg-color-main text-white col-3" [routerLink]="['/inicio']">Salir</button>
     <button class="btn bg-color-main text-white col-6 offset-3" (click)="pasarPregunta()" [routerLink]="['/pregunta']">Siguiente Pregunta</button>
   </div>
   <ng-template #elseBlock>
@@ -34,14 +33,5 @@
     </div>
 
   </ng-template>
-
-  <!--<div class="footer" *ngIf="!esUltimaPregunta() else elseBlock">
-      <button *ngFor="let respuesta of pregunta.respuestas" class="btn bg-color-main text-white respuesta mt-1 w-100" (click)="pasarPregunta()" [routerLink]="['/explicacion']">{{respuesta.respuesta}}</button>
-  </div>
-  <ng-template #elseBlock>
-    <div class="footer">
-        <button *ngFor="let respuesta of pregunta.respuestas" class="btn bg-color-main text-white respuesta mt-1 w-100" (click)="mandarPuntuacion()">{{respuesta.respuesta}}</button>
-    </div>
-  </ng-template> -->
 
 </div>

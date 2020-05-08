@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Pregunta } from 'src/app/objects/pregunta';
 import { PreguntasService } from 'src/app/services/preguntas.service';
 import Swal from 'sweetalert2';
+import { AjustesService } from 'src/app/services/ajustes.service';
 
 @Component({
   selector: 'app-preguntas',
@@ -12,7 +13,7 @@ export class PreguntasComponent implements OnInit {
 
   preguntas: Pregunta[];
 
-  constructor(private preguntasService: PreguntasService) { }
+  constructor(private preguntasService: PreguntasService, private ajustesService: AjustesService) { }
 
   ngOnInit(): void {
     this.cargarPreguntas();
@@ -36,6 +37,15 @@ export class PreguntasComponent implements OnInit {
     }).then((result) => {
       if (result.value) {
         this.preguntasService.delete(pregunta._id).subscribe( response => {
+          this.ajustesService.getConfig().subscribe(config => {
+            let preguntas: {preguntas: string[]} = {preguntas: null}
+            preguntas.preguntas = config.preguntas;
+            if(preguntas.preguntas.includes(pregunta._id)){
+              let index = preguntas.preguntas.indexOf(pregunta._id)
+              preguntas.preguntas.splice(index, 1)
+              this.ajustesService.putConfig(preguntas).subscribe(response => {})
+            }
+          })
           this.preguntasService.getPreguntas().subscribe(preguntas => this.preguntas = preguntas)
           Swal.fire(
             '¡Eliminada!',
