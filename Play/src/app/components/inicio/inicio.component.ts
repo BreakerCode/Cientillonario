@@ -9,8 +9,6 @@ import { Pregunta } from 'src/app/objects/pregunta';
   styleUrls: ['./inicio.component.css']
 })
 export class InicioComponent implements OnInit {
-  
-  usuario: string;
 
   constructor(private activatedRoute: ActivatedRoute, private preguntasService: PreguntasService) { }
 
@@ -25,16 +23,17 @@ export class InicioComponent implements OnInit {
       }
       localStorage['id']=1;
       this.preguntasService.obtenerInfo().subscribe(info=>{
+          localStorage['usuario'] = info.data.user.nickname;
+          localStorage['puntuacionMax'] = info.config.puntuacionMax;
+          localStorage['puntuacion'] = 0;
           localStorage['tiempo'] = info.config.tiempo;
           var preguntas: Pregunta[] = info.items
           preguntas = preguntas.filter(pregunta => (<string[]>info.config.preguntas).includes(pregunta._id))
           localStorage['preguntas'] =  JSON.stringify(preguntas);
+          localStorage['puntuacionPregunta'] = info.config.puntuacionMax / preguntas.length;
+          localStorage['frases'] = JSON.stringify(info.config.frases);
       })
     })
-  }
-
-  jugar():void {
-    localStorage.setItem('usuario', this.usuario);
   }
 
 }
