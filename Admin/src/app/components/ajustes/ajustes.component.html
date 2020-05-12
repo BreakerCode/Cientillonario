@@ -17,10 +17,13 @@
                       <div class="panel-body">
                           <p class="text-primary">Seleccione el tiempo que desea para cada pregunta: </p>
                           <div class="form-group">
-                              <input type="number" class="form-control" name="tiempo" [(ngModel)]="ajustes.tiempo" #tiempoVal="ngModel" min="10" max="50" required>
+                              <input type="number" class="form-control" name="tiempo" [(ngModel)]="ajustes.tiempo" #tiempoVal="ngModel" min="10" max="50" required pattern="[1-5][0-9]">
                               <div class="alert alert-danger" *ngIf="tiempoVal.invalid && (tiempoVal.dirty || tiempoVal.touched)">
                                 <div *ngIf="tiempoVal.errors.required">
                                   El tiempo es requerido.
+                                </div>
+                                <div *ngIf="tiempoVal.errors.pattern">
+                                  El tiempo debe estar entre 10 y 50.
                                 </div>
                               </div>
                           </div>
@@ -114,6 +117,11 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="alert alert-danger" *ngIf="ajustes.preguntas.length<5">
+          <div>
+            Es necesario seleccionar mínimo 5 preguntas.
+          </div>
         </div>
         <!--BOTON GUARDAR-->
         <div class="form-group" style="text-align:center">

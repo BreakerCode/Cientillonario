@@ -37,6 +37,25 @@ export class FormularioPreguntasComponent implements OnInit {
   }
 
   updatePregunta():void {
+    let valid: boolean = true;
+    this.pregunta.pregunta = this.pregunta.pregunta.trim();
+    if(this.pregunta.pregunta.length==0){
+      valid = false;
+    }
+    this.pregunta.respuestas.forEach(respuesta => {
+      respuesta.respuesta = respuesta.respuesta.trim();
+      if(respuesta.respuesta.length==0){
+        valid = false;
+      }
+    })
+    this.pregunta.explicacion = this.pregunta.explicacion.trim();
+    if(this.pregunta.explicacion.length==0){
+      valid = false;
+    }
+    this.pregunta.pista = this.pregunta.pista.trim();
+    if(this.pregunta.pista.length==0){
+      valid = false;
+    }
     this.pregunta.respuestas.forEach((respuesta, index) => {
       if(index!=this.preguntaCorrecta){
         respuesta.correcta = false;
@@ -44,18 +63,43 @@ export class FormularioPreguntasComponent implements OnInit {
         respuesta.correcta=true;
       }
     })
-    this.preguntaService.update(this.pregunta).subscribe(response => {
-      this.router.navigate(['/preguntas'])
-      Swal.fire('Pregunta editada',`Se ha editado la pregunta con éxito`, 'success')
-    });
+
+    if(valid){
+      this.preguntaService.update(this.pregunta).subscribe(response => {
+        this.router.navigate(['/preguntas'])
+        Swal.fire('Pregunta editada',`Se ha editado la pregunta con éxito`, 'success')
+      });
+    }
   }
 
   crearPregunta():void {
-    this.pregunta.respuestas[this.preguntaCorrecta].correcta=true;
-    this.preguntaService.create(this.pregunta).subscribe(response => {
-      this.router.navigate(['/preguntas'])
-      Swal.fire('Nueva Pregunta',`Se ha creado la pregunta con éxito`, 'success')
-    });
+    let valid: boolean = true;
+    this.pregunta.pregunta = this.pregunta.pregunta.trim();
+    if(this.pregunta.pregunta.length==0){
+      valid = false;
+    }
+    this.pregunta.respuestas.forEach(respuesta => {
+      respuesta.respuesta = respuesta.respuesta.trim();
+      if(respuesta.respuesta.length==0){
+        valid = false;
+      }
+    })
+    this.pregunta.explicacion = this.pregunta.explicacion.trim();
+    if(this.pregunta.explicacion.length==0){
+      valid = false;
+    }
+    this.pregunta.pista = this.pregunta.pista.trim();
+    if(this.pregunta.pista.length==0){
+      valid = false;
+    }
+
+    if(valid){
+      this.pregunta.respuestas[this.preguntaCorrecta].correcta=true;
+      this.preguntaService.create(this.pregunta).subscribe(response => {
+        this.router.navigate(['/preguntas'])
+        Swal.fire('Nueva Pregunta',`Se ha creado la pregunta con éxito`, 'success')
+      });
+    }
   }
 
 }

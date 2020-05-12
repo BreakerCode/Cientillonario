@@ -38,3 +38,14 @@ body {
   --main-color: #084f86;
   color: var(--main-color);
 }
+
+@media only screen and (max-device-width: 340px){
+  .puntuacion{
+    height: 40px;
+    border-radius: 10%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+  }
+}

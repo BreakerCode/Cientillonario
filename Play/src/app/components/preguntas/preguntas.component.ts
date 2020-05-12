@@ -69,6 +69,7 @@ export class PreguntasComponent implements OnInit {
       } else if(tiempoPorcentaje < 0.66){
         puntuacionPregunta = puntuacionPregunta * 0.75;
       }
+      puntuacionPregunta = Math.round(puntuacionPregunta);
       localStorage['puntuacion'] = Number(this.puntuacion) + Number(puntuacionPregunta);
     }
     localStorage['esCorrecta'] = respuesta.correcta;

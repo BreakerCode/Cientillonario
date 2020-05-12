@@ -128,13 +128,22 @@
     font-weight: bold;
   }
 
-  .puntuacion{
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
+  .contador{
+    position: relative;
+    width: 50px;
+    height: 65px;
+    margin-top: 5px;
+    margin-right: 5px;
+    display: inline-block;
     text-align: center;
-    justify-content: center;
-    align-items: center;
-    font-size: 12px;
+  }
+
+  .tiempo{
+    font-size: 18px;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 }

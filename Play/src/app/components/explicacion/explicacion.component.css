@@ -1,3 +1,9 @@
 textarea{
   resize: none;
 }
+
+@media only screen and (max-device-width: 340px){
+  h5{
+    font-size: 16px;
+  }
+}

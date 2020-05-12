@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PreguntasService } from 'src/app/services/preguntas.service';
+import { Puntos } from 'src/app/objects/puntos';
 
 @Component({
   selector: 'app-resultado',
@@ -7,11 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResultadoComponent implements OnInit {
 
+  puntos: Puntos = new Puntos();
   puntuacion: number;
   puntuacionMax: number;
   frase: string;
 
-  constructor() { }
+  constructor(private preguntasService: PreguntasService) { }
 
   ngOnInit(): void {
     this.puntuacion = localStorage['puntuacion'];
@@ -26,6 +29,9 @@ export class ResultadoComponent implements OnInit {
       this.frase = JSON.parse(localStorage['frases']) [2];
       document.getElementById('frase').className += " text-success";
     }
+    this.preguntasService.enviarPuntos(this.puntos).subscribe(response => {
+      
+    })
 
   }
 

@@ -14,10 +14,9 @@ export class ExplicacionComponent implements OnInit {
   modo: string;
   puntuacion: number;
   usuario: string;
-  puntos: Puntos = new Puntos();
   pregunta: Pregunta = new Pregunta();
 
-  constructor(private preguntasService: PreguntasService) { }
+  constructor() { }
 
   ngOnInit(): void {
     this.puntuacion = localStorage['puntuacion'];
@@ -43,10 +42,6 @@ export class ExplicacionComponent implements OnInit {
       }
     }
 
-  }
-
-  mandarPuntuacion(): void{
-      this.preguntasService.enviarPuntos(this.puntos);
   }
 
   esCorrecta(): boolean{

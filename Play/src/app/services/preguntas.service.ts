@@ -23,23 +23,13 @@ export class PreguntasService {
   }
 
   obtenerInfo(): Observable<any>{
-     return this.http.get<any>(this.urlEndPoint+'info', {headers: this.httpHeaders.append('invitation', this.invitation)}).pipe(
-       catchError(e => {
-         Swal.fire('Error al obtener info', e, 'error');
-         return throwError(e);
-       })
-     );
+     return this.http.get<any>(this.urlEndPoint+'info', {headers: this.httpHeaders.append('invitation', this.invitation)});
    }
 
    enviarPuntos(puntos: Puntos): Observable<any>{
      puntos.invitation = this.invitation;
      puntos.validation = this.validation;
-     return this.http.post<any>(this.urlEndPoint+'send_points', puntos, {headers: this.httpHeaders}).pipe(
-       catchError(e => {
-         Swal.fire('Error al enviar la puntuación', e.error.mensaje, 'error');
-         return throwError(e);
-       })
-     )
+     return this.http.post<any>(this.urlEndPoint+'send_points', puntos, {headers: this.httpHeaders});
    }
 
 }

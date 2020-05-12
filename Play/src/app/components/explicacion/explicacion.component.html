@@ -25,11 +25,11 @@
   </ng-template>
 
   <div class="row mt-5 w-100 ml-0" *ngIf="!esUltimaPregunta() else elseBlock">
-    <button class="btn bg-color-main text-white col-6 offset-3" (click)="pasarPregunta()" [routerLink]="['/pregunta']">Siguiente Pregunta</button>
+    <button class="btn bg-color-main text-white col-8 offset-2" (click)="pasarPregunta()" [routerLink]="['/pregunta']">Siguiente Pregunta</button>
   </div>
   <ng-template #elseBlock>
     <div class="row mt-5 w-100 ml-0">
-      <button class="btn bg-color-main text-white col-6 offset-3" (click)="mandarPuntuacion()" [routerLink]="['/resultado']">Finalizar</button>
+      <button class="btn bg-color-main text-white col-8 offset-2" [routerLink]="['/resultado']">Finalizar</button>
     </div>
 
   </ng-template>
