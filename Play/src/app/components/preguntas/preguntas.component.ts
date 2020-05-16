@@ -26,6 +26,12 @@ export class PreguntasComponent implements OnInit {
     this.tiempoActual = this.tiempo;
     this.tiempoActual++;
     this.usuario = localStorage.getItem('usuario');
+    if(localStorage['usedBomba']=='true'){
+      this.disabledBomba = true;
+      document.getElementById("bomba").setAttribute("style", "opacity: 0.5;")
+    } else{
+      this.disabledBomba = false;
+    }
     this.cargarPregunta();
 
   }
@@ -55,6 +61,7 @@ export class PreguntasComponent implements OnInit {
     if(id>JSON.parse(localStorage['preguntas']).length){
       this.router.navigate(['inicio'])
     }
+
   }
 
   comprobarRespuesta(respuesta: any){
@@ -89,6 +96,7 @@ export class PreguntasComponent implements OnInit {
         document.getElementById("respuesta"+index).setAttribute('disabled', 'disabled');
       })
       document.getElementById("bomba").setAttribute("style", "opacity: 0.5;")
+      localStorage['usedBomba'] = this.disabledBomba;
     }
   }
 

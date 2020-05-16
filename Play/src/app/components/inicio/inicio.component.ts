@@ -46,6 +46,7 @@ export class InicioComponent implements OnInit {
             localStorage['puntuacionPregunta'] = info.config.puntuacionMax / preguntas.length;
             localStorage['frases'] = JSON.stringify(info.config.frases);
             localStorage['modo'] = this.cuestionario.modo;
+            localStorage['usedBomba'] = false;
           }
         })
 
