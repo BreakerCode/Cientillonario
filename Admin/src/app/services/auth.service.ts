@@ -31,34 +31,35 @@ export class AuthService {
 
 
     this.userToken = idToken;
-    localStorage.setItem('token', idToken);
+    sessionStorage.setItem('token', idToken);
 
   }
 
   public leerToken(){
-    if(localStorage.getItem('token') ){
+    if(sessionStorage.getItem('token') ){
 
-      this.userToken = localStorage.getItem('token');
+      this.userToken = sessionStorage.getItem('token');
 
     } else {
-
-      this.userToken = '';
-
+      this.userToken =  null;
 
     }
+
+    return this.userToken;
 
 
   }
 
   public isLogin(): boolean {
 
-    return (this.userToken !== undefined);
+    this.userToken = sessionStorage.getItem('token');
+    return (this.userToken != null);
 
   }
 
   public logout(){
 
-    localStorage.removeItem('token');
+    sessionStorage.removeItem('token');
 
   }
 

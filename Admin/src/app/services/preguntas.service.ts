@@ -3,6 +3,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Pregunta } from '../objects/pregunta';
 import { AuthService } from './auth.service';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -16,9 +17,7 @@ export class PreguntasService {
   private token;
 
   constructor(private http: HttpClient, private authService: AuthService) {
-    authService.leerToken();
-
-    this.token = "?token="+authService.userToken;
+    this.token = "?token="+authService.leerToken();
   }
 
   create(pregunta: Pregunta): Observable<any> {
@@ -38,7 +37,9 @@ export class PreguntasService {
   }
 
   getPreguntas(): Observable<Pregunta[]> {
-    return this.http.get<Pregunta[]>(`${this.urlEndPoint}${this.token}`, {headers: this.httpHeaders});
+    return this.http.get<Pregunta[]>(`${this.urlEndPoint}${this.token}`, {headers: this.httpHeaders}).pipe(
+      map( preguntas => preguntas.filter(pregunta => pregunta.pregunta != null) )
+    );
   }
 
 }

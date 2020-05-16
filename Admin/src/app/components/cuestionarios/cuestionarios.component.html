@@ -2,7 +2,7 @@
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Lista de Preguntas</h1>
+            <h1 class="page-header">Lista de Cuestionarios</h1>
         </div>
     </div>
 
@@ -13,10 +13,13 @@
         <table class="table table-condensed card-table table-bordered table-striped">
             <thead>
                 <tr>
-                    <th>Titulo</th>
-                    <th>Modo</th>
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th>Tiempo pregunta</th>
+                    <th>Modo de juego</th>
+                    <th>Dificultad</th>
                     <th style="float: right;">
-                      <button class="btn btn-sm btn-success" [routerLink]="['/preguntas/form']" style="width: 100px;">
+                      <button class="btn btn-sm btn-success" [routerLink]="['/cuestionarios/form']" style="width: 100px;">
                         <i class="fa fa-gamepad"></i> Nuevo
                       </button>
                     </th>
@@ -24,16 +27,19 @@
             </thead>
 
             <tbody>
-              <tr *ngFor="let pregunta of preguntas">
-                <td>{{pregunta.pregunta}}</td>
-                <td>{{pregunta.modo}}</td>
+              <tr *ngFor="let cuestionario of cuestionarios">
+                <td>{{cuestionario._id}}</td>
+                <td>{{cuestionario.titulo}}</td>
+                <td>{{cuestionario.tiempo}}</td>
+                <td>{{cuestionario.modo}}</td>
+                <td>{{cuestionario.dificultad}}</td>
                 <td style="float: right;">
-                  <button class="btn btn-sm btn-danger" (click)="eliminarPregunta(pregunta)" style="width: 100px;">
+                  <button class="btn btn-sm btn-danger" (click)="eliminarCuestionario(cuestionario)" style="width: 100px;">
                     <i  class="fa fa-trash-o"></i> Eliminar
                   </button>
                 </td>
                 <td style="float: right;">
-                  <button class="btn btn-sm btn-primary" [routerLink]="['/preguntas/form', pregunta._id]" style="margin-right: 10px; width: 100px;">
+                  <button class="btn btn-sm btn-primary" [routerLink]="['/cuestionarios/form', cuestionario._id]" style="margin-right: 10px; width: 100px;">
                     <i _ngcontent-c3="" class="fa fa-edit"></i> Editar
                 </button>
                 </td>

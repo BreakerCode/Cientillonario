@@ -16,6 +16,7 @@ import { PreguntasComponent } from './components/preguntas/preguntas.component';
 import { AjustesComponent } from './components/ajustes/ajustes.component';
 import { NavegacionComponent } from './components/navegacion/navegacion.component';
 import { PreguntasService } from './services/preguntas.service';
+import { CuestionariosComponent } from './components/cuestionarios/cuestionarios.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { PreguntasService } from './services/preguntas.service';
     LoginComponent,
     PreguntasComponent,
     AjustesComponent,
-    NavegacionComponent
+    NavegacionComponent,
+    CuestionariosComponent
   ],
   imports: [
     BrowserModule,

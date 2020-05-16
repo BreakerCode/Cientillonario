@@ -2,12 +2,34 @@
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Ajustes</h1>
+                <h1 class="page-header">Cuestionario</h1>
             </div>
         </div>
 
-        <form name="ajustesForm" role="form" #ajustesForm="ngForm">
+        <form name="cuestionarioForm" role="form" #cuestionarioForm="ngForm">
           <div class="row">
+
+            <!--PANEL TITULO CUESTIONARIO-->
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong> Titulo Cuestionario </strong>
+                    </div>
+                    <div class="panel-body">
+                        <p class="text-primary">Seleccione el titulo deseado para el cuestionario: </p>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="titulo" [(ngModel)]="cuestionario.titulo" #tituloVal="ngModel" required>
+                            <div class="alert alert-danger" *ngIf="tituloVal.invalid && (tituloVal.dirty || tituloVal.touched)">
+                              <div *ngIf="tituloVal.errors.required">
+                                El titulo es requerido.
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.panelTitulo -->
+
               <!--PANEL TIEMPO PREGUNTA-->
               <div class="col-lg-4">
                   <div class="panel panel-default">
@@ -17,13 +39,13 @@
                       <div class="panel-body">
                           <p class="text-primary">Seleccione el tiempo que desea para cada pregunta: </p>
                           <div class="form-group">
-                              <input type="number" class="form-control" name="tiempo" [(ngModel)]="ajustes.tiempo" #tiempoVal="ngModel" min="10" max="50" required pattern="[1-5][0-9]">
+                              <input type="number" class="form-control" name="tiempo" [(ngModel)]="cuestionario.tiempo" #tiempoVal="ngModel" min="10" max="50" required pattern="[1-4][0-9]">
                               <div class="alert alert-danger" *ngIf="tiempoVal.invalid && (tiempoVal.dirty || tiempoVal.touched)">
                                 <div *ngIf="tiempoVal.errors.required">
                                   El tiempo es requerido.
                                 </div>
                                 <div *ngIf="tiempoVal.errors.pattern">
-                                  El tiempo debe estar entre 10 y 50.
+                                  El tiempo debe estar entre 10 y 49.
                                 </div>
                               </div>
                           </div>
@@ -41,7 +63,7 @@
                       <div class="panel-body">
                           <p class="text-primary">Seleccione el modo de juego que desea: </p>
                           <div class="form-group">
-                              <select class="form-control" name="modo" [(ngModel)]="ajustes.modo" #modoVal="ngModel" required>
+                              <select class="form-control" name="modo" [(ngModel)]="cuestionario.modo" #modoVal="ngModel" required>
                                   <option value="Arcade">Arcade</option>
                                   <option value="Survival">Survival</option>
                               </select>
@@ -65,7 +87,7 @@
                       <div class="panel-body">
                           <p class="text-primary">Seleccione la dificultad de juego que desea: </p>
                           <div class="form-group">
-                              <select class="form-control" name="dificultad" [(ngModel)]="ajustes.dificultad" #dificultadVal="ngModel" required (change)="cambioDificultad()">
+                              <select class="form-control" name="dificultad" [(ngModel)]="cuestionario.dificultad" #dificultadVal="ngModel" required (change)="cambioDificultad()">
                                   <option value="Fácil">Fácil</option>
                                   <option value="Difícil">Difícil</option>
                                   <option value="Ambas">Ambas</option>
@@ -118,16 +140,25 @@
                 </div>
             </div>
         </div>
-        <div class="alert alert-danger" *ngIf="ajustes.preguntas.length<5">
+        <div class="alert alert-danger" *ngIf="cuestionario.preguntas.length<5">
           <div>
             Es necesario seleccionar mínimo 5 preguntas.
           </div>
         </div>
-        <!--BOTON GUARDAR-->
-        <div class="form-group" style="text-align:center">
-            <button type="submit" class="btn btn-primary"  (click)="guardarCambios()" [disabled]="!ajustesForm.form.valid || ajustes.preguntas.length<5">
-            <i class="fa fa-save"></i>  Guardar Cambios
-            </button>
-        </div>
+
+        <!--BOTON GUARDAR Y CANCELAR-->
+        <button class="btn btn-primary" type="submit" (click)="createCuestionario()" [disabled]="!cuestionarioForm.form.valid || cuestionario.preguntas.length<5" *ngIf="!cuestionario._id else buttonEditar">
+          <i class="fa fa-save"></i> Crear
+        </button>
+        <ng-template #buttonEditar>
+          <button class="btn btn-primary" type="submit" (click)="updateCuestionario()" [disabled]="!cuestionarioForm.form.valid">
+            <i class="fa fa-save"></i> Editar
+          </button>
+        </ng-template>
+
+        <!-- /.botonCancelar -->
+        <button class="btn text-primary" type="submit" [routerLink]="['/preguntas']">
+          <i class="glyphicon glyphicon-ban-circle"></i> Cancelar
+        </button>
         <!-- /.botonGuardar -->
     </div>

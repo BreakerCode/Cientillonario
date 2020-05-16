@@ -115,12 +115,10 @@
             Es necesario seleccionar una respuesta como verdadera.
           </div>
         </div>
+
         <!--BOTON GUARDAR Y CANCELAR-->
         <div class="form-group">
-            <!-- /.botonCancelar -->
-            <button class="btn text-primary" type="submit" [routerLink]="['/preguntas']">
-              <i class="glyphicon glyphicon-ban-circle"></i> Cancelar
-            </button>
+
             <!-- /.botonGuardar -->
             <button class="btn btn-primary" type="submit" (click)="crearPregunta()" [disabled]="!preguntaForm.form.valid" *ngIf="!pregunta._id else buttonEditar">
               <i class="fa fa-save"></i> Crear
@@ -130,6 +128,11 @@
                 <i class="fa fa-save"></i> Editar
               </button>
             </ng-template>
+
+            <!-- /.botonCancelar -->
+            <button class="btn text-primary" type="submit" [routerLink]="['/preguntas']">
+              <i class="glyphicon glyphicon-ban-circle"></i> Cancelar
+            </button>
 
         </div>
 

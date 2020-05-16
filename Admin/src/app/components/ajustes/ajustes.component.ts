@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Ajustes } from 'src/app/objects/ajustes';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AjustesService } from 'src/app/services/ajustes.service';
 import { Pregunta } from 'src/app/objects/pregunta';
 import { PreguntasService } from 'src/app/services/preguntas.service';
 import Swal from 'sweetalert2';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { CuestionariosService } from 'src/app/services/cuestionarios.service';
+import { Cuestionario } from 'src/app/objects/cuestionario';
 
 @Component({
   selector: 'app-ajustes',
@@ -14,26 +14,36 @@ import { Router } from '@angular/router';
 })
 export class AjustesComponent implements OnInit {
 
-  ajustes: Ajustes = new Ajustes();
+  cuestionario: Cuestionario = new Cuestionario();
   preguntas: Pregunta[];
   preguntasFiltradas: Pregunta[];
 
-  constructor(private preguntasService: PreguntasService, private ajustesService: AjustesService, private router: Router) {
+  constructor(private preguntasService: PreguntasService, private cuestionariosService: CuestionariosService, private router: Router, private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
+    this.cargarCuestionario();
 
-    this.ajustesService.getConfig().subscribe(ajustes => {
-      this.ajustes = ajustes
-      this.preguntasService.getPreguntas().subscribe(preguntas => {
-        this.preguntas = preguntas
-        this.filtrarPreguntas();
+  }
+
+  cargarCuestionario(): void{
+
+    this.activatedRoute.params.subscribe(params => {
+        let id = params['id']
+        if(id){
+          this.cuestionariosService.getCuestionario(id).subscribe( cuestionario => {
+            this.cuestionario = cuestionario;
+          })
+        }
+        this.preguntasService.getPreguntas().subscribe(preguntas => {
+          this.preguntas = preguntas
+          this.filtrarPreguntas();
+        })
       })
-    })
   }
 
   incluida(id: string): boolean{
-    if(this.ajustes.preguntas.includes(id)){
+    if(this.cuestionario.preguntas.includes(id)){
       return true;
     } else{
       return false;
@@ -41,32 +51,55 @@ export class AjustesComponent implements OnInit {
   }
 
   filtrarPreguntas(): void{
-    if(this.ajustes.dificultad == "Ambas"){
+    if(this.cuestionario.dificultad == "Ambas"){
       this.preguntasFiltradas = this.preguntas
     }else{
-      this.preguntasFiltradas=this.preguntas.filter(pregunta => pregunta.modo == this.ajustes.dificultad)
+      this.preguntasFiltradas=this.preguntas.filter(pregunta => pregunta.modo == this.cuestionario.dificultad)
     }
   }
 
   cambioDificultad(): void{
-    this.ajustes.preguntas=[];
+    this.cuestionario.preguntas=[];
     this.filtrarPreguntas();
   }
 
   addPregunta(id: string): void{
-    this.ajustes.preguntas.push(id)
+    this.cuestionario.preguntas.push(id)
   }
 
   deletePregunta(id: string): void{
-    let index = this.ajustes.preguntas.indexOf(id);
-    this.ajustes.preguntas.splice(index, 1);
+    let index = this.cuestionario.preguntas.indexOf(id);
+    this.cuestionario.preguntas.splice(index, 1);
   }
 
-  guardarCambios(): void{
-    this.ajustesService.putConfig(this.ajustes).subscribe(response => {
-      this.router.navigate(['/ajustes'])
-      Swal.fire('Ajustes guardados',`Se han guardado los ajustes con éxito`, 'success')
-    });
+  createCuestionario(): void{
+    let valid: boolean = true;
+    this.cuestionario.titulo = this.cuestionario.titulo.trim();
+    if(this.cuestionario.titulo.length==0){
+      valid = false;
+    }
+
+    if(valid){
+      this.cuestionariosService.create(this.cuestionario).subscribe(response => {
+        this.router.navigate(['/cuestionarios'])
+        Swal.fire('Nuevo Cuestionario',`Se ha creado el cuestionario con éxito`, 'success')
+      });
+    }
+  }
+
+  updateCuestionario(): void{
+    let valid: boolean = true;
+    this.cuestionario.titulo = this.cuestionario.titulo.trim();
+    if(this.cuestionario.titulo.length==0){
+      valid = false;
+    }
+
+    if(valid){
+      this.cuestionariosService.update(this.cuestionario).subscribe(response => {
+        this.router.navigate(['/cuestionarios'])
+        Swal.fire('Cuestinario editado',`Se ha editado el cuestionario con éxito`, 'success')
+      });
+    }
   }
 
 }
