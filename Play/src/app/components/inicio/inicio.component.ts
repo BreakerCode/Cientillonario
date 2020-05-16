@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PreguntasService } from 'src/app/services/preguntas.service';
 import { Pregunta } from 'src/app/objects/pregunta';
+import { Cuestionario } from 'src/app/objects/cuestionario';
 
 @Component({
   selector: 'app-inicio',
@@ -10,9 +11,9 @@ import { Pregunta } from 'src/app/objects/pregunta';
 })
 export class InicioComponent implements OnInit {
 
-  modo: string;
-  dificultad: string;
   explicacion: string;
+  cuestionario: Cuestionario;
+  correcto: boolean;
 
   constructor(private activatedRoute: ActivatedRoute, private preguntasService: PreguntasService) { }
 
@@ -20,32 +21,42 @@ export class InicioComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe(params => {
       let invitation = params['invitation']
       let validation = params['validation']
+      let idCuestionario = params['cuestionario']
 
-      if(invitation && validation){
+      if(invitation && validation && idCuestionario){
         localStorage.setItem('invitation', invitation);
         localStorage.setItem('validation', invitation);
+        this.correcto = true;
+        localStorage['id']=1;
+
+        this.preguntasService.obtenerInfo().subscribe(info=>{
+          this.cuestionario = info.items.find(item => item._id==idCuestionario)
+          if(this.cuestionario == null){
+            this.correcto = false;
+          } else{
+            this.crearExplicación();
+
+            localStorage['usuario'] = info.data.user.nickname;
+            localStorage['puntuacionMax'] = info.config.puntuacionMax;
+            localStorage['puntuacion'] = 0;
+            localStorage['tiempo'] = this.cuestionario.tiempo;
+            let preguntas: Pregunta[];
+            preguntas = info.items.filter(pregunta => (<string[]>this.cuestionario.preguntas).includes(pregunta._id))
+            localStorage['preguntas'] =  JSON.stringify(preguntas);
+            localStorage['puntuacionPregunta'] = info.config.puntuacionMax / preguntas.length;
+            localStorage['frases'] = JSON.stringify(info.config.frases);
+            localStorage['modo'] = this.cuestionario.modo;
+          }
+        })
+
+      }else{
+        this.correcto = false;
       }
-      localStorage['id']=1;
-      this.preguntasService.obtenerInfo().subscribe(info=>{
-          this.modo = info.config.modo;
-          this.crearExplicación();
-          this.dificultad = info.config.dificultad;
-          localStorage['usuario'] = info.data.user.nickname;
-          localStorage['puntuacionMax'] = info.config.puntuacionMax;
-          localStorage['puntuacion'] = 0;
-          localStorage['tiempo'] = info.config.tiempo;
-          var preguntas: Pregunta[] = info.items
-          preguntas = preguntas.filter(pregunta => (<string[]>info.config.preguntas).includes(pregunta._id))
-          localStorage['preguntas'] =  JSON.stringify(preguntas);
-          localStorage['puntuacionPregunta'] = info.config.puntuacionMax / preguntas.length;
-          localStorage['frases'] = JSON.stringify(info.config.frases);
-          localStorage['modo'] = info.config.modo;
-      })
     })
   }
 
   crearExplicación():void{
-    if(this.modo == 'Arcade'){
+    if(this.cuestionario.modo == 'Arcade'){
       this.explicacion = "En este modo Arcade, deberás jugar hasta contestar todas las preguntas para obtener los puntos."
     } else{
         this.explicacion = "En este modo Survival, si fallas una pregunta se terminará el juego, se te darán los puntos correspondientes a las preguntas acertadas."

@@ -26,10 +26,10 @@ export class PreguntasService {
      return this.http.get<any>(this.urlEndPoint+'info', {headers: this.httpHeaders.append('invitation', this.invitation)});
    }
 
-   enviarPuntos(puntos: Puntos): Observable<any>{
-     puntos.invitation = this.invitation;
-     puntos.validation = this.validation;
-     return this.http.post<any>(this.urlEndPoint+'send_points', puntos, {headers: this.httpHeaders});
-   }
+  enviarPuntos(puntos: Puntos): Observable<any>{
+   puntos.invitation = this.invitation;
+   puntos.validation = this.validation;
+   return this.http.post<any>(this.urlEndPoint+'send_points', puntos, {headers: this.httpHeaders});
+  }
 
 }
