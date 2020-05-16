@@ -25,7 +25,7 @@ export class InicioComponent implements OnInit {
 
       if(invitation && validation && idCuestionario){
         localStorage.setItem('invitation', invitation);
-        localStorage.setItem('validation', invitation);
+        localStorage.setItem('validation', validation);
         this.correcto = true;
         localStorage['id']=1;
 
