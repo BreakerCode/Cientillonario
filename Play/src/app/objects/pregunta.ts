@@ -5,6 +5,6 @@ export class Pregunta {
   modo: string;
   categoria: string;
   respuestas: {respuesta: string, correcta: boolean}[];
-  pista: string;
+  pista: {pista: string, isImagen: boolean} = {pista:"", isImagen: null};
   explicacion: string;
 }

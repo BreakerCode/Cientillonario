@@ -27,7 +27,6 @@ export class PreguntasComponent implements OnInit {
     this.tiempoActual++;
     this.usuario = localStorage.getItem('usuario');
     this.cargarPregunta();
-    this.updateClock();
 
   }
 
@@ -91,8 +90,17 @@ export class PreguntasComponent implements OnInit {
       })
       document.getElementById("bomba").setAttribute("style", "opacity: 0.5;")
     }
+  }
 
-
+  bombilla(){
+    if(!this.pregunta.pista.isImagen){
+      document.getElementById("pistaImagen").style.display = "none";
+      document.getElementById("pistaTexto").style.display = "block";
+    } else{
+      document.getElementById("pistaImagen").setAttribute("src", this.pregunta.pista.pista);
+    }
+    document.getElementById("bombilla").style.opacity = "0.5";
+    document.getElementById("bombilla").setAttribute('disabled', 'disabled');
   }
 
 

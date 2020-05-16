@@ -52,8 +52,8 @@ export class FormularioPreguntasComponent implements OnInit {
     if(this.pregunta.explicacion.length==0){
       valid = false;
     }
-    this.pregunta.pista = this.pregunta.pista.trim();
-    if(this.pregunta.pista.length==0){
+    this.pregunta.pista.pista = this.pregunta.pista.pista.trim();
+    if(this.pregunta.pista.pista.length==0){
       valid = false;
     }
     this.pregunta.respuestas.forEach((respuesta, index) => {
@@ -88,8 +88,8 @@ export class FormularioPreguntasComponent implements OnInit {
     if(this.pregunta.explicacion.length==0){
       valid = false;
     }
-    this.pregunta.pista = this.pregunta.pista.trim();
-    if(this.pregunta.pista.length==0){
+    this.pregunta.pista.pista = this.pregunta.pista.pista.trim();
+    if(this.pregunta.pista.pista.length==0){
       valid = false;
     }
 
