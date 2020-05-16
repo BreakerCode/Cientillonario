@@ -12,8 +12,8 @@ import { Cuestionario } from 'src/app/objects/cuestionario';
 export class InicioComponent implements OnInit {
 
   explicacion: string;
-  cuestionario: Cuestionario;
-  correcto: boolean;
+  cuestionario: Cuestionario = new Cuestionario();
+  correcto: boolean = false;
 
   constructor(private activatedRoute: ActivatedRoute, private preguntasService: PreguntasService) { }
 
