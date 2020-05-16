@@ -33,6 +33,7 @@ export class PreguntasComponent implements OnInit {
       this.disabledBomba = false;
     }
     this.cargarPregunta();
+    this.updateClock();
 
   }
 
