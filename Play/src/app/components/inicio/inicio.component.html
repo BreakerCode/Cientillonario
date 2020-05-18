@@ -10,7 +10,7 @@
 </div>
 
 
-<p class="text-center"><button class="btn button text-white mt-2 w-100" [routerLink]="['/pregunta']" [disabled]="!correcto">Jugar</button></p>
+<p class="text-center"><button class="btn button text-white mt-2 w-100" [routerLink]="['/pregunta']" replaceUrl [disabled]="!correcto">Jugar</button></p>
 <div class="alert alert-danger" *ngIf="!correcto">
   No se han recibido los parametros necesarios.
 </div>

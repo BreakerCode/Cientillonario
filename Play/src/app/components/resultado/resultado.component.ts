@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { PreguntasService } from 'src/app/services/preguntas.service';
 import { Puntos } from 'src/app/objects/puntos';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-resultado',
@@ -15,7 +17,7 @@ export class ResultadoComponent implements OnInit {
   puntuacionMax: number;
   frase: string;
 
-  constructor(private preguntasService: PreguntasService) { }
+  constructor(private preguntasService: PreguntasService, private _location: Location) { }
 
   ngOnInit(): void {
     this.puntuacion = localStorage['puntuacion'];
@@ -41,6 +43,10 @@ export class ResultadoComponent implements OnInit {
       }
     })
 
+  }
+
+  salir():void{
+    this._location.back();
   }
 
 

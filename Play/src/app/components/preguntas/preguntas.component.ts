@@ -41,7 +41,7 @@ export class PreguntasComponent implements OnInit {
     if(this.tiempoActual != -1){
       if(this.tiempoActual==0){
         localStorage['esCorrecta'] = false;
-        this.router.navigate(['/explicacion'])
+        this.router.navigate(['/explicacion'], { replaceUrl: true })
       }else{
         this.tiempoActual-=1;
         setTimeout( () =>{
@@ -60,7 +60,7 @@ export class PreguntasComponent implements OnInit {
       this.pregunta = JSON.parse(localStorage['preguntas'])[this.id-1];
     }
     if(id>JSON.parse(localStorage['preguntas']).length){
-      this.router.navigate(['inicio'])
+      this.router.navigate(['inicio'], { replaceUrl: true })
     }
 
   }
