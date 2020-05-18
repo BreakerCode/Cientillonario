@@ -21,24 +21,25 @@ export class ResultadoComponent implements OnInit {
 
   ngOnInit(): void {
     //OBTENCIÓN PUNTUACIÓN CONSEGUIDA
-    this.puntuacion = localStorage['puntuacion'];
+    this.puntuacion = sessionStorage['puntuacion'];
     //OBTENCIÓN PUNTUACIÓN MÁXIMA
-    this.puntuacionMax = localStorage['puntuacionMax'];
+    this.puntuacionMax = sessionStorage['puntuacionMax'];
     //ELECCIÓN FRASE SEGÚN PUNTUACIÓN CONSEGUIDA
     if(this.puntuacion < this.puntuacionMax*0.4){
-      this.frase = JSON.parse(localStorage['frases'])[0];
+      this.frase = JSON.parse(sessionStorage['frases'])[0];
       document.getElementById('frase').className += " text-danger";
     } else if(this.puntuacion < this.puntuacionMax*0.7){
-      this.frase = JSON.parse(localStorage['frases'])[1];
+      this.frase = JSON.parse(sessionStorage['frases'])[1];
       document.getElementById('frase').className += " text-orange";
     } else{
-      this.frase = JSON.parse(localStorage['frases']) [2];
+      this.frase = JSON.parse(sessionStorage['frases']) [2];
       document.getElementById('frase').className += " text-success";
     }
     //ENVIO DE PUNTUACIÓN A CENTIC CON PORCENTAJE SEGÚN PUNTUACIÓN CONSEGUIDA
     let percent:number = (this.puntuacion * 100) / this.puntuacionMax
     this.puntos.percent = percent;
     this.preguntasService.enviarPuntos(this.puntos).subscribe(response => {
+      console.log(response);
       if(response!.Message){
         Swal.fire('Envío de puntuación', 'Lo sentimos, esta partida no cuenta', 'warning')
       } else{

@@ -21,15 +21,15 @@ export class PreguntasComponent implements OnInit {
 
   ngOnInit(): void {
     //OBTENCIÓN PUNTUACIÓN ACTUAL
-    this.puntuacion = localStorage['puntuacion'];
+    this.puntuacion = sessionStorage['puntuacion'];
     //OBTENCIÓN TIEMPO POR PREGUNTA
-    this.tiempo = localStorage['tiempo'];
+    this.tiempo = sessionStorage['tiempo'];
     //TIEMPO CONTADOR
     this.tiempoActual = this.tiempo;
     //OBTENCIÓN NICKNAME
-    this.usuario = localStorage.getItem('usuario');
+    this.usuario = sessionStorage.getItem('usuario');
     //DESACTIVAR BOMBA SI YA SE HA USADO
-    if(localStorage['usedBomba']=='true'){
+    if(sessionStorage['usedBomba']=='true'){
       this.disabledBomba = true;
       document.getElementById("bomba").setAttribute("style", "opacity: 0.5;")
     } else{
@@ -46,7 +46,7 @@ export class PreguntasComponent implements OnInit {
     if(this.tiempoActual != -1){
       //SI HA TERMINADO SE INDICA COMO INCORRECTA LA RESPUESTA Y SE PASA  A LA EXPLICACIÓN
       if(this.tiempoActual==0){
-        localStorage['esCorrecta'] = false;
+        sessionStorage['esCorrecta'] = false;
         this.router.navigate(['/explicacion'], { replaceUrl: true })
       }
       //SI NO HA TERMINADO SE RESTA UNO
@@ -60,14 +60,14 @@ export class PreguntasComponent implements OnInit {
   }
 
   cargarPregunta(){
-    let id = localStorage['id'];
+    let id = sessionStorage['id'];
     if(id){
       this.id = id;
       this.idSiguiente = id;
       this.idSiguiente++;
-      this.pregunta = JSON.parse(localStorage['preguntas'])[this.id-1];
+      this.pregunta = JSON.parse(sessionStorage['preguntas'])[this.id-1];
     }
-    if(id>JSON.parse(localStorage['preguntas']).length){
+    if(id>JSON.parse(sessionStorage['preguntas']).length){
       this.router.navigate(['inicio'], { replaceUrl: true })
     }
 
@@ -80,7 +80,7 @@ export class PreguntasComponent implements OnInit {
     this.tiempoActual = -1
     //COMPROBAMOS SI ES CORRECTA LA RESPUESTA
     if(respuesta.correcta){
-      let puntuacionPregunta: number = localStorage['puntuacionPregunta'];
+      let puntuacionPregunta: number = sessionStorage['puntuacionPregunta'];
       let tiempoPorcentaje = duracion / this.tiempo;
       //DEPENDIENDO DEL TIEMPO CONSUMIDO, RESTAREMOS PUNTUACIÓN DE LA PREGUNTA
       if(tiempoPorcentaje < 0.33){
@@ -91,10 +91,10 @@ export class PreguntasComponent implements OnInit {
       //REDONDEAMOS LA PUNTUACIÓN PARA QUE NO HAYAN DECIMALES
       puntuacionPregunta = Math.round(puntuacionPregunta);
       //SUMAMOS A LA PUNTUACIÓN TOTAL LA PUNTUACIÓN DE ESTA PREGUNTA.
-      localStorage['puntuacion'] = Number(this.puntuacion) + Number(puntuacionPregunta);
+      sessionStorage['puntuacion'] = Number(this.puntuacion) + Number(puntuacionPregunta);
     }
     //ESTABLECEMOS SI HEMOS ACERTADO LA RESPUESTA PARA OBTENERLA EN LA EXPLICACIÓN
-    localStorage['esCorrecta'] = respuesta.correcta;
+    sessionStorage['esCorrecta'] = respuesta.correcta;
   }
 
   //USO COMODIN BOMBA
@@ -118,7 +118,7 @@ export class PreguntasComponent implements OnInit {
       //BAJAMOS OPACIDAD A LA BOMBA TRAS DESACTIVARLA
       document.getElementById("bomba").setAttribute("style", "opacity: 0.5;")
       //INDICAMOS QUE SE HA USADO LA BOMBA.
-      localStorage['usedBomba'] = this.disabledBomba;
+      sessionStorage['usedBomba'] = this.disabledBomba;
     }
   }
 

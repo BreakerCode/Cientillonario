@@ -18,13 +18,17 @@ export class PreguntasService {
   private httpHeaders = new HttpHeaders({'Content-Type':'application/json'});
 
   constructor(private http: HttpClient) {
-    this.invitation = localStorage.getItem('invitation');
-    this.validation = localStorage.getItem('validation');
+    this.invitation = sessionStorage.getItem('invitation');
+    this.validation = sessionStorage.getItem('validation');
   }
 
   obtenerInfo(): Observable<any>{
+    if(!this.invitation || !this.validation){
+      this.invitation = sessionStorage.getItem('invitation');
+      this.validation = sessionStorage.getItem('validation');
+    }
      return this.http.get<any>(this.urlEndPoint+'info', {headers: this.httpHeaders.append('invitation', this.invitation)});
-   }
+  }
 
   enviarPuntos(puntos: Puntos): Observable<any>{
    puntos.invitation = this.invitation;

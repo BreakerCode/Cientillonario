@@ -16,19 +16,19 @@ export class ExplicacionComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.puntuacion = localStorage['puntuacion'];
-    this.usuario = localStorage.getItem('usuario');
-    this.pregunta = JSON.parse(localStorage['preguntas'])[parseInt(localStorage['id'])-1];
-    this.modo = localStorage['modo'];
+    this.puntuacion = sessionStorage['puntuacion'];
+    this.usuario = sessionStorage.getItem('usuario');
+    this.pregunta = JSON.parse(sessionStorage['preguntas'])[parseInt(sessionStorage['id'])-1];
+    this.modo = sessionStorage['modo'];
   }
 
   pasarPregunta():void {
-    localStorage['id']=parseInt(localStorage['id'])+1;
+    sessionStorage['id']=parseInt(sessionStorage['id'])+1;
   }
 
   esUltimaPregunta(): boolean{
     if(this.modo=='Arcade'){
-      if(localStorage['id'] == JSON.parse(localStorage['preguntas']).length){
+      if(sessionStorage['id'] == JSON.parse(sessionStorage['preguntas']).length){
         return true;
       } else{
         return false;
@@ -41,7 +41,7 @@ export class ExplicacionComponent implements OnInit {
   }
 
   esCorrecta(): boolean{
-    if(localStorage["esCorrecta"] == "true"){
+    if(sessionStorage["esCorrecta"] == "true"){
       return true;
     } else{
       return false;

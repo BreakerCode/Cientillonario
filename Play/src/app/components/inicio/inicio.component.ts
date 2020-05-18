@@ -30,11 +30,11 @@ export class InicioComponent implements OnInit {
 
       //VALIDAR QUE SE RECOGEN LOS PARAMETROS
       if(invitation && validation && idCuestionario){
-        localStorage.setItem('invitation', invitation);
-        localStorage.setItem('validation', validation);
+        sessionStorage.setItem('invitation', invitation);
+        sessionStorage.setItem('validation', validation);
         this.correcto = true;
         //INICIALIZACIÓN INDEX PARA RECORRER PREGUNTAS
-        localStorage['id']=1;
+        sessionStorage['id']=1;
 
         //OBTENCIÓN INFO
         this.preguntasService.obtenerInfo().subscribe(info=>{
@@ -42,31 +42,31 @@ export class InicioComponent implements OnInit {
           this.cuestionario = info.items.find(item => item._id==idCuestionario)
 
           //VALIDAR OBTENCION CUESTIONARIO
-          if(this.cuestionario == null){
+          if(!this.cuestionario._id){
             this.correcto = false;
           } else{
             this.crearExplicación();
 
             //OBTENCIÓN NICKNAME
-            localStorage['usuario'] = info.data.user.nickname;
+            sessionStorage['usuario'] = info.data.user.nickname;
             //OBTENCIÓN PUNTUACIÓN MÁXIMA
-            localStorage['puntuacionMax'] = info.config.puntuacionMax;
+            sessionStorage['puntuacionMax'] = info.config.puntuacionMax;
             //INICIALIZACIÓN PUNTUACIÓN JUEGO
-            localStorage['puntuacion'] = 0;
+            sessionStorage['puntuacion'] = 0;
             //ESTABLECER TIEMPO POR PREGUNTA
-            localStorage['tiempo'] = this.cuestionario.tiempo;
+            sessionStorage['tiempo'] = this.cuestionario.tiempo;
             //OBTENCIÓN PREGUNTAS CUESTIONARIO
             let preguntas: Pregunta[];
             preguntas = info.items.filter(pregunta => (<string[]>this.cuestionario.preguntas).includes(pregunta._id))
-            localStorage['preguntas'] =  JSON.stringify(preguntas);
+            sessionStorage['preguntas'] =  JSON.stringify(preguntas);
             //ESTABLECER PUNTUACIÓN POR PREGUNTA
-            localStorage['puntuacionPregunta'] = info.config.puntuacionMax / preguntas.length;
+            sessionStorage['puntuacionPregunta'] = info.config.puntuacionMax / preguntas.length;
             //ESTABLECER FRASES PARA EL RESULTADO DEL JUEGO
-            localStorage['frases'] = JSON.stringify(info.config.frases);
+            sessionStorage['frases'] = JSON.stringify(info.config.frases);
             //ESTABLECER MODO DE JUEGO
-            localStorage['modo'] = this.cuestionario.modo;
+            sessionStorage['modo'] = this.cuestionario.modo;
             //INICIALIZACIÓN BOOLEAN PARA SABER SI SE USÓ COMODÍN BOMBA
-            localStorage['usedBomba'] = false;
+            sessionStorage['usedBomba'] = false;
           }
         })
 
