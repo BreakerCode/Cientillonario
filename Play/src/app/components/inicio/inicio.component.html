@@ -1,20 +1,25 @@
+<!--LOGO JUEGO-->
 <div class="text-center">
     <img src="assets/img/logo.png" class="">
 </div>
 
+<!--TITULO JUEGO-->
 <p class="text-center h4">¿Quién quiere ser Cientillonario?</p>
+
+<!--AJUSTES JUEGO-->
 <div class="modo-juego">
   <p class="mx-3">Modo de juego seleccionado: <strong>{{cuestionario.modo}}</strong></p>
   <p class="mx-3">Dificultad seleccionada: <strong>{{cuestionario.dificultad}}</strong></p>
   <p class="mx-3">{{explicacion}}</p>
 </div>
 
-
+<!--BOTÓN JUGAR-->
 <p class="text-center"><button class="btn button text-white mt-2 w-100" [routerLink]="['/pregunta']" replaceUrl [disabled]="!correcto">Jugar</button></p>
 <div class="alert alert-danger" *ngIf="!correcto">
   No se han recibido los parametros necesarios.
 </div>
 
+<!--LOGO CENTIC-->
 <div class="footer">
     <img src="assets/img/centic.png" class="logocentic w-50">
 </div>

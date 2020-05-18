@@ -1,16 +1,21 @@
 <div id="container" class="position-absolute text-center">
+  <!--TITULO-->
   <h1 class="mt-4">PESO CEREBRO</h1>
+  <!--IMAGEN PESO CEREBRO CON PUNTUACIÓN-->
   <div class="position-relative">
+    <!--IMAGEN-->
     <img src="/assets/img/pesocerebro.png" alt="cerebro" class="w-75">
+    <!--PUNTUACIÓN CONSEGUIDA-->
     <div class="pesoCerebro"><p class="mb-5">{{puntuacion}}g</p></div>
+    <!--PUNTUACIÓN MÁXIMA-->
     <p class="pesoMaximo">{{puntuacionMax}}g</p>
   </div>
-
+  <!--FRASE SEGÚN PUNTUACIÓN-->
   <p id="frase" class="mt-4 h5">{{frase}}</p>
+  <!--BOTÓN SALIR-->
   <div class="footer">
     <div class="row mx-2">
       <button class="btn btn-lg bg-color-main text-white mb-4 col-4 offset-4" (click)="salir()">Salir</button>
     </div>
-
   </div>
 </div>

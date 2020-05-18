@@ -20,8 +20,11 @@ export class ResultadoComponent implements OnInit {
   constructor(private preguntasService: PreguntasService, private _location: Location) { }
 
   ngOnInit(): void {
+    //OBTENCIÓN PUNTUACIÓN CONSEGUIDA
     this.puntuacion = localStorage['puntuacion'];
+    //OBTENCIÓN PUNTUACIÓN MÁXIMA
     this.puntuacionMax = localStorage['puntuacionMax'];
+    //ELECCIÓN FRASE SEGÚN PUNTUACIÓN CONSEGUIDA
     if(this.puntuacion < this.puntuacionMax*0.4){
       this.frase = JSON.parse(localStorage['frases'])[0];
       document.getElementById('frase').className += " text-danger";
@@ -32,7 +35,7 @@ export class ResultadoComponent implements OnInit {
       this.frase = JSON.parse(localStorage['frases']) [2];
       document.getElementById('frase').className += " text-success";
     }
-
+    //ENVIO DE PUNTUACIÓN A CENTIC CON PORCENTAJE SEGÚN PUNTUACIÓN CONSEGUIDA
     let percent:number = (this.puntuacion * 100) / this.puntuacionMax
     this.puntos.percent = percent;
     this.preguntasService.enviarPuntos(this.puntos).subscribe(response => {
@@ -42,13 +45,10 @@ export class ResultadoComponent implements OnInit {
         Swal.fire('Envío de puntuación', 'Se ha obtenido '+response!.action+' puntos. Ranking del juego: '+response!.match_ranking+'º posición.\n Puntuación del juego: '+response!.match_score+' puntos.' , 'success')
       }
     })
-
   }
 
+  //NOS DEVUELVE A LA APLICACIÓN DEL CENTIC, YA QUE SE HA IDO LIMPIANDO LA NAVEGACIÓN
   salir():void{
     this._location.back();
   }
-
-
-
 }

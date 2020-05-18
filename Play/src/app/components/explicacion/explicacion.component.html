@@ -1,3 +1,4 @@
+<!--USUARIO Y PUNTUACIÓN-->
 <div class="row w-100 ml-0 bg-color-main">
   <div class="col-8 header">
       <p class="ml-3 pt-3 text-white">{{usuario}}</p>
@@ -8,14 +9,19 @@
 </div>
 
 <div class="text-center">
+  <!--TITULO PREGUNTA-->
   <h5 class="mt-4 d-flex justify-content-center">
     <p class="mx-3">{{pregunta.pregunta}}</p>
   </h5>
+
+  <!--EXPLICACION PREGUNTA CORRECTA-->
   <div *ngIf="esCorrecta() else Incorrecta">
     <img src="assets/img/correcto.jpg" alt="acierto" class="w-50">
     <h2 class="text-success">¡CORRECTO!</h2>
     <textarea rows="4" [(ngModel)]="pregunta.explicacion" disabled="true" class="form-control border border-success text-success"></textarea>
   </div>
+
+  <!--EXPLICACION PREGUNTA INCORRECTA-->
   <ng-template #Incorrecta>
     <div>
       <img src="assets/img/incorrecto.jpg" alt="fallo" class="w-50">
@@ -24,9 +30,11 @@
     </div>
   </ng-template>
 
+  <!--BOTÓN SIGUIENTE PREGUNTA-->
   <div class="row mt-5 w-100 ml-0" *ngIf="!esUltimaPregunta() else elseBlock">
     <button class="btn bg-color-main text-white col-8 offset-2" (click)="pasarPregunta()" [routerLink]="['/pregunta']" replaceUrl replace>Siguiente Pregunta</button>
   </div>
+  <!--BOTÓN FINALIZAR-->
   <ng-template #elseBlock>
     <div class="row mt-5 w-100 ml-0">
       <button class="btn bg-color-main text-white col-8 offset-2" [routerLink]="['/resultado']" replaceUrl>Finalizar</button>

@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { PreguntasService } from 'src/app/services/preguntas.service';
-import Swal from 'sweetalert2';
-import { Puntos } from 'src/app/objects/puntos';
 import { Pregunta } from 'src/app/objects/pregunta';
 
 @Component({
@@ -41,7 +38,6 @@ export class ExplicacionComponent implements OnInit {
         return true;
       }
     }
-
   }
 
   esCorrecta(): boolean{
