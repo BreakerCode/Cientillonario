@@ -26,7 +26,6 @@ export class PreguntasComponent implements OnInit {
     this.tiempo = localStorage['tiempo'];
     //TIEMPO CONTADOR
     this.tiempoActual = this.tiempo;
-    this.tiempoActual++;
     //OBTENCIÓN NICKNAME
     this.usuario = localStorage.getItem('usuario');
     //DESACTIVAR BOMBA SI YA SE HA USADO
