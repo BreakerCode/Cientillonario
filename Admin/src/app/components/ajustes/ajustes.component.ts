@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Pregunta } from 'src/app/objects/pregunta';
 import { PreguntasService } from 'src/app/services/preguntas.service';
 import Swal from 'sweetalert2';
@@ -26,8 +25,8 @@ export class AjustesComponent implements OnInit {
 
   }
 
+  //CARGAR CUESTIONARIO
   cargarCuestionario(): void{
-
     this.activatedRoute.params.subscribe(params => {
         let id = params['id']
         if(id){
@@ -42,6 +41,7 @@ export class AjustesComponent implements OnInit {
       })
   }
 
+  //Saber si la pregunta se encuentra incluida en el cuestionario
   incluida(id: string): boolean{
     if(this.cuestionario.preguntas.includes(id)){
       return true;
@@ -50,6 +50,7 @@ export class AjustesComponent implements OnInit {
     }
   }
 
+  //Se filtran las preguntas según la dificultad elegida
   filtrarPreguntas(): void{
     if(this.cuestionario.dificultad == "Ambas"){
       this.preguntasFiltradas = this.preguntas
@@ -58,20 +59,24 @@ export class AjustesComponent implements OnInit {
     }
   }
 
+  //Al cambiar la dificultad se filtran las preguntas
   cambioDificultad(): void{
     this.cuestionario.preguntas=[];
     this.filtrarPreguntas();
   }
 
+  //Se incluye la pregunta al cuestionario
   addPregunta(id: string): void{
     this.cuestionario.preguntas.push(id)
   }
 
+  //SE BORRA LA PREGUNTA AL CUESTIONARIO
   deletePregunta(id: string): void{
     let index = this.cuestionario.preguntas.indexOf(id);
     this.cuestionario.preguntas.splice(index, 1);
   }
 
+  //SE CREA EL CUESTIONARIO
   createCuestionario(): void{
     let valid: boolean = true;
     this.cuestionario.titulo = this.cuestionario.titulo.trim();
@@ -87,6 +92,7 @@ export class AjustesComponent implements OnInit {
     }
   }
 
+  //SE EDITA EL CUESTIONARIO
   updateCuestionario(): void{
     let valid: boolean = true;
     this.cuestionario.titulo = this.cuestionario.titulo.trim();

@@ -30,7 +30,7 @@
 </div>
 
 <!--IMAGEN CIENTÍFICO / MOSTRAR PISTAS-->
-<img id="pistaImagen" src="assets/img/cientifico.png" class="cientifico">
+<img id="pistaImagen" src="assets/img/cientifico.png" (error)="errorPista()" class="cientifico">
 <textarea id="pistaTexto" rows="4" [(ngModel)]="pregunta.pista.pista" disabled="true" class="form-control border border-primary cientifico"  style="display: none"></textarea>
 
 <!--RESPUESTAS-->

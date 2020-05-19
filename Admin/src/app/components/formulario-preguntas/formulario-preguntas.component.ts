@@ -37,6 +37,7 @@ export class FormularioPreguntasComponent implements OnInit {
   }
 
   updatePregunta():void {
+    //SE QUITAN LOS ESPACIOS EN BLANCO DE TODOS LOS ATRIBUTOS
     let valid: boolean = true;
     this.pregunta.pregunta = this.pregunta.pregunta.trim();
     if(this.pregunta.pregunta.length==0){
@@ -64,6 +65,7 @@ export class FormularioPreguntasComponent implements OnInit {
       }
     })
 
+    //SI DESPUES DE QUITAR LOS ESPACIOS EN BLANCO ES VALIDO EL FORMULARIO LO ACTUALIZAMOS
     if(valid){
       this.preguntaService.update(this.pregunta).subscribe(response => {
         this.router.navigate(['/preguntas'])
@@ -73,6 +75,7 @@ export class FormularioPreguntasComponent implements OnInit {
   }
 
   crearPregunta():void {
+    //SE QUITAN LOS ESPACIOS EN BLANCO DE TODOS LOS ATRIBUTOS
     let valid: boolean = true;
     this.pregunta.pregunta = this.pregunta.pregunta.trim();
     if(this.pregunta.pregunta.length==0){
@@ -92,7 +95,7 @@ export class FormularioPreguntasComponent implements OnInit {
     if(this.pregunta.pista.pista.length==0){
       valid = false;
     }
-
+    //SI DESPUES DE QUITAR LOS ESPACIOS EN BLANCO ES VALIDO EL FORMULARIO LO CREAMOS
     if(valid){
       this.pregunta.respuestas[this.preguntaCorrecta].correcta=true;
       this.preguntaService.create(this.pregunta).subscribe(response => {

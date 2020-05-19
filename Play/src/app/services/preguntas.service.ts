@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
-import Swal from 'sweetalert2';
+import { Observable} from 'rxjs';
 import { Puntos } from '../objects/puntos';
 
 @Injectable({

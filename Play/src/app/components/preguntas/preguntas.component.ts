@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Pregunta } from 'src/app/objects/pregunta';
 
 @Component({
@@ -137,5 +137,9 @@ export class PreguntasComponent implements OnInit {
     //DESACTIVAMOS Y BAJAMOS LA OPACIDAD A LA BOMBILLA
     document.getElementById("bombilla").style.opacity = "0.5";
     document.getElementById("bombilla").setAttribute('disabled', 'disabled');
+  }
+
+  errorPista(){
+    document.getElementById("pistaImagen").setAttribute("src", 'assets/img/cientifico.png');
   }
 }

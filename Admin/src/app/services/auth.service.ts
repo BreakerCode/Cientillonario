@@ -6,8 +6,6 @@ import { Router } from '@angular/router';
 
 const URL = environment.url;
 
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -28,42 +26,25 @@ export class AuthService {
   }
 
   public guardarToken(idToken: string){
-
-
     this.userToken = idToken;
     sessionStorage.setItem('token', idToken);
-
   }
 
   public leerToken(){
     if(sessionStorage.getItem('token') ){
-
       this.userToken = sessionStorage.getItem('token');
-
     } else {
       this.userToken =  null;
-
     }
-
     return this.userToken;
-
-
   }
 
   public isLogin(): boolean {
-
     this.userToken = sessionStorage.getItem('token');
     return (this.userToken != null);
-
   }
 
   public logout(){
-
     sessionStorage.removeItem('token');
-
   }
-
-
-
-
 }
